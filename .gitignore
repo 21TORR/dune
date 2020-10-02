@@ -1,0 +1,16 @@
+/node_modules
+/package-lock.json
+/tests/dist
+/pnpm-lock.yaml
+
+# ignore build files
+*.d.ts
+*.js
+!/@types/*.d.ts
+
+# don't ignore test files
+!/tests/**/*.js
+!/.build/*
+
+# don't ignore build config
+!/firefly.js

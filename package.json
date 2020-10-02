@@ -1,0 +1,23 @@
+{
+	"name": "@21torr/dune",
+	"description": "A library of commonly used JS functionality.",
+	"license": "MIT",
+	"homepage": "https://github.com/21TORR/dune",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/21TORR/dune.git"
+	},
+	"version": "0.0.1",
+	"scripts": {
+		"build": "npm run clean && npm run build:ts",
+		"build:ts": "tsc --version && tsc --diagnostics --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty",
+		"clean": "node .build/clean.mjs",
+		"dev": "tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
+		"prepublishOnly": "npm run build",
+		"test": "browserstack-runner"
+	},
+	"devDependencies": {
+		"glob": "^7.1.6",
+		"typescript": "^4.0.2"
+	}
+}

@@ -1,0 +1,18 @@
+/.DS_Store
+/.build
+/.github
+/.gitignore
+/.idea
+/.npmignore
+/browserstack.json
+/firefly.js
+/node_modules
+/package-lock.json
+/pnpm-lock.yaml
+/tests
+/tsconfig.json
+
+# ignore all .ts when publishing
+*.ts
+*.tsx
+!*.d.ts
