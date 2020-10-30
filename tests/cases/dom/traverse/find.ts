@@ -1,5 +1,5 @@
 import QUnit from "qunit";
-import {find} from '../../../../dom/traverse';
+import {find} from '../../../../src/dom/traverse';
 
 QUnit.module("dom/traverse");
 
@@ -28,8 +28,8 @@ QUnit.test("find(): global cases", assert =>
 				elements.map(element => element.dataset.id),
 				matches
 			);
-	});
-})
+		});
+});
 
 
 QUnit.test("find(): local tests", assert =>
@@ -49,4 +49,4 @@ QUnit.test("find(): local tests", assert =>
 
 	assert.equal(elements.length, 1);
 	assert.equal(elements[0].dataset.id, "2-inner");
-})
+});
