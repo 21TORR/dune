@@ -14,7 +14,7 @@
 		"clean": "node .build/clean.mjs",
 		"dev": "tsc --project tsconfig.build.json --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
 		"prepublishOnly": "npm run build",
-		"test": "firefly && browserstack-runner"
+		"test": "firefly release && browserstack-runner"
 	},
 	"devDependencies": {
 		"@21torr/firefly": "^1.0.0",
