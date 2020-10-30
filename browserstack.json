@@ -26,13 +26,6 @@
 			"os_version": "10"
 		},
 		{
-			"browser": "ie",
-			"browser_version": "11.0",
-			"device": null,
-			"os": "Windows",
-			"os_version": "10"
-		},
-		{
 			"browser": "safari",
 			"browser_version": "latest",
 			"device": null,
@@ -52,6 +45,15 @@
 			"device": "Google Pixel 4 XL",
 			"os_version": "10.0",
 			"realMobile": true
+		}
+	],
+	"_ignored-browsers": [
+		{
+			"browser": "ie",
+			"browser_version": "11.0",
+			"device": null,
+			"os": "Windows",
+			"os_version": "10"
 		}
 	]
 }
