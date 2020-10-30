@@ -27,5 +27,9 @@
 	"dependencies": {
 		"@types/node": "^14.11.5",
 		"core-js": "^3.6.5"
+	},
+	"np": {
+		"branch": "1.x",
+		"contents": "dist"
 	}
 }
