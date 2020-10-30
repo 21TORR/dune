@@ -10,19 +10,26 @@
 	"version": "0.0.1",
 	"scripts": {
 		"build": "npm run clean && npm run build:ts",
-		"build:ts": "tsc --version && tsc --diagnostics --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty",
+		"build:ts": "tsc --version && tsc --project tsconfig.build.json --diagnostics --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty",
 		"clean": "node .build/clean.mjs",
-		"dev": "tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
+		"dev": "tsc --project tsconfig.build.json --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
 		"prepublishOnly": "npm run build",
-		"test": "browserstack-runner"
+		"test": "firefly release && browserstack-runner"
+	},
+	"dependencies": {
+		"@types/node": "^14.11.5",
+		"core-js": "^3.6.5"
 	},
 	"devDependencies": {
+		"@21torr/firefly": "^1.0.0",
 		"@types/qunit": "^2.9.5",
+		"browserstack-runner": "^0.9.3",
 		"glob": "^7.1.6",
 		"qunit": "^2.11.3",
 		"typescript": "^4.0.3"
 	},
-	"dependencies": {
-		"core-js": "^3.6.5"
+	"np": {
+		"branch": "1.x",
+		"contents": "dist"
 	}
 }

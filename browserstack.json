@@ -1,0 +1,59 @@
+{
+	"test_path": "tests/index.html",
+	"test_framework": "qunit",
+	"exit_with_fail": true,
+	"timeout": 90,
+	"browsers": [
+		{
+			"browser": "chrome",
+			"browser_version": "latest",
+			"device": null,
+			"os": "Windows",
+			"os_version": "10"
+		},
+		{
+			"browser": "firefox",
+			"browser_version": "latest",
+			"device": null,
+			"os": "Windows",
+			"os_version": "10"
+		},
+		{
+			"browser": "edge",
+			"browser_version": "latest",
+			"device": null,
+			"os": "Windows",
+			"os_version": "10"
+		},
+		{
+			"browser": "safari",
+			"browser_version": "latest",
+			"device": null,
+			"os": "OS X",
+			"os_version": "Catalina"
+		},
+		{
+			"os": "ios",
+			"browser_version": "latest",
+			"device": "iPhone 11 Pro Max",
+			"os_version": "13",
+			"realMobile": true
+		},
+		{
+			"os": "android",
+			"browser_version": "latest",
+			"device": "Google Pixel 4 XL",
+			"os_version": "10.0",
+			"realMobile": true
+		}
+	],
+	"_ignored-browsers": [
+		{
+			"browser": "ie",
+			"browser_version": "11.0",
+			"device": null,
+			"os": "Windows",
+			"os_version": "10"
+		}
+	]
+}

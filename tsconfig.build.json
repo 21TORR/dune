@@ -1,0 +1,13 @@
+{
+	"extends": "./node_modules/@21torr/firefly/configs/tsconfig.json",
+	"compilerOptions": {
+		"outDir": "dist",
+		"rootDir": "src",
+		"sourceMap": false,
+		"declaration": true
+	},
+	"include": [
+		"src/**/*.tsx",
+		"src/**/*.ts"
+	]
+}
