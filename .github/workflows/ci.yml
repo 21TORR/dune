@@ -16,6 +16,8 @@ jobs:
 
             -   run: npm install
 
+            -   run: npm build
+
             -   run: npm test
 
             -   name: Prettify package.json
