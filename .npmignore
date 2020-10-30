@@ -10,7 +10,7 @@
 /package-lock.json
 /pnpm-lock.yaml
 /tests
-/build.tsconfig.json
+/tsconfig.*
 
 # ignore all .ts when publishing
 *.ts
