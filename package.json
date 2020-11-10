@@ -22,7 +22,7 @@
 		"core-js": "^3.6.5"
 	},
 	"devDependencies": {
-		"@21torr/firefly": "^1.2.3",
+		"@21torr/firefly": "^1.2.4",
 		"@types/qunit": "^2.9.5",
 		"browserstack-runner": "^0.9.3",
 		"glob": "^7.1.6",
