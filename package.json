@@ -10,8 +10,8 @@
 	"version": "0.0.1",
 	"scripts": {
 		"build": "npm run clean && npm run build:ts",
-		"build:ts": "tsc --version && tsc --project tsconfig.build.json --diagnostics --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty",
 		"build:tests": "firefly",
+		"build:ts": "tsc --version && tsc --project tsconfig.build.json --diagnostics --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty",
 		"clean": "node .build/clean.mjs",
 		"dev": "tsc --project tsconfig.build.json --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
 		"prepublishOnly": "npm run build",
