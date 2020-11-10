@@ -1,52 +1,48 @@
 import QUnit from "qunit";
-import {find} from '../../../../src/dom/traverse';
+import {find, findFirst} from '../../../../src/dom/traverse';
 
 QUnit.module("dom/traverse");
 
-QUnit.test("find(): global cases", assert =>
+const exampleHtml = `
+	<div id="element-1" class="_e _e-test _e-first"></div>
+	<div id="element-2" class="_e">
+		<span id="element-2-inner" class="_e _e-test"></span>
+	</div>
+	Some text
+	<div id="element-3" class="_e"></div>
+`;
+
+
+QUnit.test("find() + findFirst(): global cases", assert =>
 {
-	document.getElementById("qunit-fixture")!.innerHTML = `
-		<div class="_e _e-test _e-first" data-id="1"></div>
-		<div class="_e" data-id="2">
-			<span class="_e _e-test" data-id="2-inner"></span>
-		</div>
-		Some text
-		<div class="_e" data-id="3"></div>
-	`;
+	const fixture = document.getElementById("qunit-fixture")!;
+	fixture.innerHTML = exampleHtml;
 
 	[
-		["._e-first", ["1"]],
-		["span", ["2-inner"]],
+		["._e-first", ["element-1"]],
+		["span", ["element-2-inner"]],
 		[".missing", []],
-		["._e", ["1", "2", "2-inner", "3"]],
+		["._e", ["element-1", "element-2", "element-2-inner", "element-3"]],
 	]
 		.forEach(([selector, matches]: [string, string[]]) => {
-			const elements = find(`#qunit-fixture ${selector}`);
-			console.log(elements);
+			const elements = find(selector, fixture);
 
 			assert.deepEqual(
-				elements.map(element => element.dataset.id),
+				elements.map(element => element.id),
 				matches
 			);
+			assert.equal(findFirst(selector, fixture), elements[0] ?? null);
 		});
 });
 
 
-QUnit.test("find(): local tests", assert =>
+QUnit.test("find() + findFirst(): local tests", assert =>
 {
-	document.getElementById("qunit-fixture")!.innerHTML = `
-		<div class="_e _e-test _e-first" data-id="1"></div>
-		<div class="_e" data-id="2" id="test-context">
-			<span class="_e _e-test" data-id="2-inner"></span>
-		</div>
-		Some text
-		<div class="_e" data-id="3"></div>
-	`;
-
-	const context = document.getElementById("test-context")!;
-
+	document.getElementById("qunit-fixture")!.innerHTML = exampleHtml;
+	const context = document.getElementById("element-2")!;
 	const elements = find("._e", context);
 
 	assert.equal(elements.length, 1);
-	assert.equal(elements[0].dataset.id, "2-inner");
+	assert.equal(elements[0].id, "element-2-inner");
+	assert.equal(findFirst("._e", context), elements[0]);
 });
