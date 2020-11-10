@@ -25,7 +25,7 @@ export function find <ElementType extends HTMLElement> (selector: string, contex
 /**
  * Returns all children
  */
-export function children<ElementType extends HTMLElement = HTMLElement> (parent : Element, selector : string|null = null) : ElementType[]
+export function children <ElementType extends HTMLElement = HTMLElement> (parent : Element, selector : string|null = null) : ElementType[]
 {
 	const list : ElementType[] = [];
 	let child = parent.firstElementChild;
@@ -50,7 +50,7 @@ export function children<ElementType extends HTMLElement = HTMLElement> (parent 
  *
  * The nearest sibling is the first element in the list.
  */
-export function prev<ElementType extends HTMLElement> (element: HTMLElement, selector: string|null = null) : ElementType[]
+export function prev <ElementType extends HTMLElement> (element: HTMLElement, selector: string|null = null) : ElementType[]
 {
 	return fetchSiblings<ElementType>(element, selector, "previousElementSibling");
 }
@@ -62,7 +62,7 @@ export function prev<ElementType extends HTMLElement> (element: HTMLElement, sel
  *
  * The nearest sibling is the first element in the list.
  */
-export function next<ElementType extends HTMLElement> (element: HTMLElement, selector: string|null = null) : ElementType[]
+export function next <ElementType extends HTMLElement> (element: HTMLElement, selector: string|null = null) : ElementType[]
 {
 	return fetchSiblings<ElementType>(element, selector, "nextElementSibling");
 }
@@ -73,7 +73,7 @@ export function next<ElementType extends HTMLElement> (element: HTMLElement, sel
  *
  * If a root element is given, the parent is only searched up to (and excluding) this root node.
  */
-export function closest<ElementType extends HTMLElement> (element: HTMLElement, selector: string, rootElement: Element|null = null) : ElementType|null
+export function closest <ElementType extends HTMLElement> (element: HTMLElement, selector: string, rootElement: Element|null = null) : ElementType|null
 {
 	let parent = element.parentElement;
 
