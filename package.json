@@ -18,16 +18,16 @@
 		"test": "npm run build:tests && browserstack-runner"
 	},
 	"dependencies": {
-		"@types/node": "^14.11.5",
-		"core-js": "^3.6.5"
+		"@types/node": "^14.14.31",
+		"core-js": "^3.9.1"
 	},
 	"devDependencies": {
-		"@21torr/firefly": "^1.2.4",
-		"@types/qunit": "^2.9.5",
-		"browserstack-runner": "^0.9.3",
+		"@21torr/firefly": "^1.2.8",
+		"@types/qunit": "^2.11.1",
+		"browserstack-runner": "^0.9.4",
 		"glob": "^7.1.6",
-		"qunit": "^2.11.3",
-		"typescript": "^4.0.3"
+		"qunit": "^2.14.0",
+		"typescript": "^4.2.2"
 	},
 	"publishConfig": {
 		"access": "public"
