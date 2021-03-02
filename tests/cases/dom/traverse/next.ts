@@ -1,7 +1,7 @@
 import QUnit from "qunit";
 import {findFirst, next} from '../../../../src/dom/traverse';
 
-QUnit.module("dom/next");
+QUnit.module("dom/traverse::next()");
 
 const exampleHtml = `
 	<div id="element-1"></div>
@@ -13,7 +13,7 @@ const exampleHtml = `
 `;
 
 
-QUnit.test("next(): test cases", assert =>
+QUnit.test("basic test cases", assert =>
 {
 	const fixture = document.getElementById("qunit-fixture")!;
 

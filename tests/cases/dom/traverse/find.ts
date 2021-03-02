@@ -1,7 +1,7 @@
 import QUnit from "qunit";
 import {find, findFirst} from '../../../../src/dom/traverse';
 
-QUnit.module("dom/traverse");
+QUnit.module("dom/traverse::find() + ::findFirst()");
 
 const exampleHtml = `
 	<div id="element-1" class="_e _e-test _e-first"></div>
@@ -13,7 +13,7 @@ const exampleHtml = `
 `;
 
 
-QUnit.test("find() + findFirst(): global cases", assert =>
+QUnit.test("global cases", assert =>
 {
 	const fixture = document.getElementById("qunit-fixture")!;
 	fixture.innerHTML = exampleHtml;
@@ -36,7 +36,7 @@ QUnit.test("find() + findFirst(): global cases", assert =>
 });
 
 
-QUnit.test("find() + findFirst(): local tests", assert =>
+QUnit.test("local tests", assert =>
 {
 	document.getElementById("qunit-fixture")!.innerHTML = exampleHtml;
 	const context = document.getElementById("element-2")!;
