@@ -1,6 +1,10 @@
+import "./cases/dom/events/on";
+import "./cases/dom/events/trigger";
 import "./cases/dom/traverse/children";
 import "./cases/dom/traverse/closest";
 import "./cases/dom/traverse/find";
 import "./cases/dom/traverse/isChildOf";
-import "./cases/dom/traverse/prev";
 import "./cases/dom/traverse/next";
+import "./cases/dom/traverse/prev";
+import "./cases/lib/string/splitStringValue";
+import "./cases/mount/mount";

@@ -1,7 +1,7 @@
 import QUnit from "qunit";
 import {findFirst, closest} from '../../../../src/dom/traverse';
 
-QUnit.module("dom/closest");
+QUnit.module("dom/traverse::closest()");
 
 const exampleHtml = `
 	<div id="element-1"></div>
@@ -18,7 +18,7 @@ const exampleHtml = `
 `;
 
 
-QUnit.test("closest(): test cases", assert =>
+QUnit.test("basic test cases", assert =>
 {
 	const fixture = document.getElementById("qunit-fixture")!;
 	fixture.innerHTML = exampleHtml;
@@ -42,7 +42,7 @@ QUnit.test("closest(): test cases", assert =>
 });
 
 
-QUnit.test("closest(): with body", assert =>
+QUnit.test("with body", assert =>
 {
 	const fixture = document.getElementById("qunit-fixture")!;
 	fixture.innerHTML = exampleHtml;
