@@ -1,3 +1,9 @@
+1.1.0
+=====
+
+*   (feature) Add `toggleClass()`.
+
+
 1.0.0
 =====
 
