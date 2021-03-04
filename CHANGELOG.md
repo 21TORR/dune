@@ -2,6 +2,7 @@
 =====
 
 *   (feature) Add `registerBodyClickHandler()` and `initDismissibleContainer()`.
+*   (feature) Add `onNextAnimationFrame()`.
 
 
 1.1.0
