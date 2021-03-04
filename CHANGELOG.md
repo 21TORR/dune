@@ -1,3 +1,9 @@
+1.2.0
+=====
+
+*   (feature) Add `registerBodyClickHandler()` and `initDismissibleContainer()`.
+
+
 1.1.0
 =====
 
