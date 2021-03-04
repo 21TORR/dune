@@ -12,9 +12,9 @@
 		"build": "pnpm run clean && pnpm run build:ts",
 		"build:tests": "firefly",
 		"build:ts": "tsc --version && tsc --project tsconfig.build.json --diagnostics --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty",
-		"clean": "node .build/clean.mjs",
+		"clean": "rm -rf dist",
 		"dev": "tsc --project tsconfig.build.json --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
-		"release": "pnpm run build && echo '\nPrepare `dist` directory...\n' && cp {*.md,LICENSE,package.json,tsconfig.json} dist && echo 'done' && cd dist && npm publish",
+		"release": "pnpm run build && echo '\nPrepare `dist` directory...\n' && cp {*.md,LICENSE,package.json,tsconfig.json} dist && echo 'done' && cd dist && npm publish && cd .. && rm -rf dist",
 		"test": "pnpm run build:tests && browserstack-runner"
 	},
 	"dependencies": {
