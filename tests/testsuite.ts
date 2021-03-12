@@ -1,5 +1,6 @@
 import "./cases/dom/attrs/toggleClass";
 import "./cases/dom/events/on";
+import "./cases/dom/events/once";
 import "./cases/dom/events/trigger";
 import "./cases/dom/traverse/children";
 import "./cases/dom/traverse/closest";

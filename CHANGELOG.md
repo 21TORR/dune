@@ -1,3 +1,9 @@
+1.2.1
+=====
+
+*   (bug) Actually register the event listener in `once` + add tests.
+
+
 1.2.0
 =====
 
