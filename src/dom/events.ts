@@ -79,6 +79,7 @@ export function once <EventType extends Event> (
 		off(element, type, wrappedHandler);
 	};
 
+	on(element, type, wrappedHandler);
 	return () => off(element, type, wrappedHandler);
 }
 
