@@ -21,3 +21,19 @@ export function safeParseJson <DataType = unknown> (value?: string|null) : DataT
 		return null;
 	}
 }
+
+
+/**
+ * Parses the content of the given element as JSON
+ */
+export function parseElementContentAsJson <DataType = unknown> (element: HTMLElement|null) : DataType|null
+{
+	return null !== element
+		? safeParseJson<DataType>(
+			(element.textContent || "")
+				.replace(/&lt;/g, "<")
+				.replace(/&gt;/g, ">")
+				.replace(/&amp;/g, "&")
+		)
+		: null;
+}

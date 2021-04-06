@@ -2,6 +2,7 @@
 =====
 
 *   (feature) Add `safeParseJson()`.
+*   (feature) Add `parseElementContentAsJson()`.
 
 
 1.2.1
