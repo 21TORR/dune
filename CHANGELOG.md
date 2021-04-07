@@ -4,6 +4,7 @@
 *   (feature) Add `safeParseJson()`.
 *   (feature) Add `parseElementContentAsJson()`.
 *   (improvement) Allow to pass a single element to `mount()`.
+*   (feature) Add `mountJsx()`.
 
 
 1.2.1

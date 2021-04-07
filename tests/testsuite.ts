@@ -12,3 +12,4 @@ import "./cases/json/parseElementContentAsJson";
 import "./cases/json/safeParseJson";
 import "./cases/lib/string/splitStringValue";
 import "./cases/mount/mount";
+import "./cases/mount/mountJsx";
