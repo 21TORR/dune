@@ -8,5 +8,8 @@ import "./cases/dom/traverse/find";
 import "./cases/dom/traverse/isChildOf";
 import "./cases/dom/traverse/next";
 import "./cases/dom/traverse/prev";
+import "./cases/json/parseElementContentAsJson";
+import "./cases/json/safeParseJson";
 import "./cases/lib/string/splitStringValue";
 import "./cases/mount/mount";
+import "./cases/mount/mountJsx";
