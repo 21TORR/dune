@@ -63,7 +63,7 @@ export function matchMediaQuery (query: string): MediaQueryMatcher
 		onOff (callback: MediaQueryChangeListener) : () => void
 		{
 			this.on(callback);
-			return () => this.off(callback)
+			return () => this.off(callback);
 		},
 
 		/**

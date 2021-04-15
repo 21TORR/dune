@@ -25,7 +25,7 @@
 		"xtend": "^4.0.2"
 	},
 	"devDependencies": {
-		"@21torr/firefly": "^1.2.8",
+		"@21torr/firefly": "^2.0.2",
 		"@types/node": "^14.14.31",
 		"@types/qunit": "^2.11.1",
 		"@types/xtend": "^4.0.3",
