@@ -1,3 +1,4 @@
+import "./cases/animation/addConsecutiveClasses";
 import "./cases/dom/attrs/toggleClass";
 import "./cases/dom/events/on";
 import "./cases/dom/events/once";

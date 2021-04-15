@@ -1,7 +1,8 @@
-1.4.1
+1.5.0
 =====
 
 *   (improvement) Add possibility to pass multiple classes to toggle.
+*   (feature) Add `addConsecutiveClasses()`.
 
 
 1.4.0
