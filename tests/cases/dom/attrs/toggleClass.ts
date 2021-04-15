@@ -63,3 +63,28 @@ QUnit.test("multiple elements", assert =>
 	assert.equal(false, element2.classList.contains("to-remove"));
 	assert.equal(false, element3.classList.contains("to-remove"));
 });
+
+QUnit.test("multiple classes", assert =>
+{
+	const fixture = document.getElementById("qunit-fixture")!;
+	fixture.innerHTML = exampleHtml;
+
+	const element = document.getElementById("element-1");
+
+	// check proper setup
+	assert.equal(false, element.classList.contains("test"));
+	assert.equal(false, element.classList.contains("test2"));
+	assert.equal(false, element.classList.contains("test3"));
+
+	// add multiple
+	toggleClass(element, ["test", "test2", "test3"], true);
+	assert.equal(true, element.classList.contains("test"));
+	assert.equal(true, element.classList.contains("test2"));
+	assert.equal(true, element.classList.contains("test3"));
+
+	// remove multiple
+	toggleClass(element, ["test", "test2", "test3"], false);
+	assert.equal(false, element.classList.contains("test"));
+	assert.equal(false, element.classList.contains("test2"));
+	assert.equal(false, element.classList.contains("test3"));
+});

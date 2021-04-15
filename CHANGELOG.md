@@ -1,3 +1,9 @@
+1.4.1
+=====
+
+*   (improvement) Add possibility to pass multiple classes to toggle.
+
+
 1.4.0
 =====
 
