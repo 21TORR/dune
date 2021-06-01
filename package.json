@@ -1,5 +1,6 @@
 {
 	"name": "@21torr/dune",
+	"version": "1.5.0",
 	"description": "A library of commonly used JS functionality.",
 	"license": "MIT",
 	"homepage": "https://github.com/21TORR/dune",
@@ -7,7 +8,6 @@
 		"type": "git",
 		"url": "https://github.com/21TORR/dune.git"
 	},
-	"version": "1.5.0",
 	"scripts": {
 		"build": "pnpm run clean && pnpm run build:ts",
 		"build:tests": "firefly",
@@ -17,12 +17,12 @@
 		"release": "pnpm run build && echo '\nPrepare `dist` directory...\n' && cp {*.md,LICENSE,package.json,tsconfig.json} dist && echo 'done' && cd dist && npm publish && cd .. && rm -rf dist",
 		"test": "pnpm run build:tests && browserstack-runner"
 	},
-	"optionalDependencies": {
-		"preact": "^10.5.13"
-	},
 	"dependencies": {
 		"core-js": "^3.9.1",
 		"xtend": "^4.0.2"
+	},
+	"optionalDependencies": {
+		"preact": "^10.5.13"
 	},
 	"devDependencies": {
 		"@21torr/firefly": "^2.0.2",
@@ -32,6 +32,7 @@
 		"browserstack-runner": "^0.9.4",
 		"fs-extra": "^9.1.0",
 		"preact": "^10.5.13",
+		"prettier-package-json": "^2.6.0",
 		"qunit": "^2.14.0",
 		"typescript": "^4.2.2"
 	},
