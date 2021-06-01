@@ -1,3 +1,9 @@
+1.5.1
+=====
+
+*   (improvement) Add callback to `addConsecutiveClasses()`. 
+
+
 1.5.0
 =====
 

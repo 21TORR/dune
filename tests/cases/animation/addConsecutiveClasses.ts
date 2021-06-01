@@ -41,3 +41,23 @@ QUnit.test("fast removal", assert =>
 		});
 	});
 });
+
+
+QUnit.test("with callback", assert =>
+{
+	const element = document.createElement("div");
+	const done = assert.async();
+
+	const onUpdate = (isFinal) =>
+	{
+		assert.step(isFinal ? "final" : "not final");
+
+		if (isFinal)
+		{
+			assert.verifySteps(["not final", "final"]);
+			done();
+		}
+	};
+
+	addConsecutiveClasses(element, "class-1", "class-2", onUpdate);
+});
