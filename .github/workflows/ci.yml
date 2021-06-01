@@ -29,5 +29,5 @@ jobs:
 
 
             -   name: Prettify package.json
-                run: npx prettier-package-json --use-tabs --list-different
+                run: ./node_modules/.bin/prettier-package-json --use-tabs --list-different
 
