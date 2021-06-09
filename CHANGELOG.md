@@ -1,3 +1,9 @@
+1.5.3
+=====
+
+*   (bug) Fix `registerBodyClickHandler` for pages that have no or a small body.
+
+
 1.5.2
 =====
 

@@ -28,10 +28,10 @@ export function registerBodyClickHandler (allowedClickTargets: HTMLElement[], on
 		onInvalidTargetClick();
 	};
 
-	on(document.body, "click", handler);
+	on(document, "click", handler);
 
 	return () => {
-		off(document.body, "click", handler);
+		off(document, "click", handler);
 	};
 }
 
