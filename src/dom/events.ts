@@ -97,11 +97,6 @@ export function delegate <EventType extends Event, ElementType extends HTMLEleme
 	handler: DelegatedEventHandler<EventType, ElementType>
 ) : UnregisterEventCallback
 {
-	if (!element)
-	{
-		return () => { /* empty dummy callback */ };
-	}
-
 	const wrappedHandler = (event: EventType) =>
 	{
 		const delegateTarget = closest(event.target as HTMLElement, selector, element as HTMLElement);
@@ -112,7 +107,7 @@ export function delegate <EventType extends Event, ElementType extends HTMLEleme
 		}
 	};
 
-	return () => off(element, type, wrappedHandler);
+	return onOff(element, type, wrappedHandler);
 }
 
 /**
