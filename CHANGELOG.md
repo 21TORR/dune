@@ -4,6 +4,7 @@
 *   (improvement) `closest()` now properly checks the element itself. If you want the old behavior, use `closest(element.parentElement)` instead.
 *   (improvement) You can now call `closest()` with `null` as element.
 *   (bug) Fix `delegate` not actually registering the event listener.
+*   (improvement) Bump all dependencies.
 
 
 1.5.3
