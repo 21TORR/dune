@@ -24,7 +24,7 @@ QUnit.test("basic test cases", assert =>
 	fixture.innerHTML = exampleHtml;
 
 	[
-		["#element-2-inner-2-inner", "#element-2-inner-2-inner", null, null],
+		["#element-2-inner-2-inner", "#element-2-inner-2-inner", null, "element-2-inner-2-inner"],
 		["#element-2-inner-2-inner", "#element-2-inner-2", null, "element-2-inner-2"],
 		["#element-2-inner-2-inner", "#element-2", null, "element-2"],
 		["#element-2-inner-2-inner", "#element-2", "#element-2-inner-2", null],
@@ -51,4 +51,10 @@ QUnit.test("with body", assert =>
 
 	assert.equal(closest(reference, "body"), document.body);
 	assert.equal(closest(reference, "body", document.documentElement), document.body);
+});
+
+
+QUnit.test("element is null", assert =>
+{
+	assert.equal(closest(null, "body"), null);
 });
