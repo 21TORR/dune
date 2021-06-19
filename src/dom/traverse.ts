@@ -73,9 +73,14 @@ export function next <ElementType extends HTMLElement> (element: HTMLElement, se
  *
  * If a root element is given, the parent is only searched up to (and excluding) this root node.
  */
-export function closest <ElementType extends HTMLElement> (element: HTMLElement, selector: string, rootElement: Element|null = null) : ElementType|null
+export function closest <ElementType extends HTMLElement> (element: HTMLElement|null, selector: string, rootElement: Element|null = null) : ElementType|null
 {
-	let parent = element.parentElement;
+	if (null === element)
+	{
+		return null;
+	}
+
+	let parent = element;
 
 	while (null !== parent && rootElement !== parent)
 	{
