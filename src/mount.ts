@@ -60,7 +60,7 @@ export function mountJsx <ComponentProperty = Record<string, unknown>> (
 		}
 
 		// try to parse the content as JSON
-		params = xtend(params, parseElementContentAsJson(element) || {});
+		params = xtend(params, parseElementContentAsJson<Record<string, unknown>>(element) || {});
 
 		// wrap or use the parent as target
 		if (options.wrap)

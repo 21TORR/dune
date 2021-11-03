@@ -1,3 +1,9 @@
+1.5.5
+=====
+
+*   (improvement) Build TypeScript while preserving the comments.
+
+
 1.5.4
 =====
 
