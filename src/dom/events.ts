@@ -39,7 +39,7 @@ export function on <EventType extends Event> (
 export function off (
 	element: ExtendedEventTarget,
 	type: ExtendedEventName,
-	handler: EventHandlerNonNull
+	handler: EventHandler<any>
 ) : void
 {
 
