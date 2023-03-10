@@ -1,3 +1,9 @@
+1.6.0
+=====
+
+*   (feature) add `useDebounced`.
+
+
 1.5.6
 =====
 
