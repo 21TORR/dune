@@ -1,7 +1,26 @@
 {
-	"extends": "./node_modules/@21torr/firefly/configs/tsconfig.json",
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"alwaysStrict": false,
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"lib": [
+			"dom",
+			"es5",
+			"es2015",
+			"es2016"
+		],
+		"moduleResolution": "node",
+		"noImplicitThis": true,
+		"outDir": "dist",
+		"removeComments": false,
+		"rootDir": "src",
+		"sourceMap": false
+	},
 	"include": [
-		"**/*.tsx",
-		"**/*.ts"
+		"src/**/*.tsx",
+		"src/**/*.ts"
 	]
 }
