@@ -32,7 +32,7 @@ export function useDebounced <TValue = unknown> (
 
 			return () => window.clearTimeout(timer);
 		},
-		[delay, onSetCallback, value]
+		[delay, onSetCallback, value],
 	);
 
 	return debouncedValue;
