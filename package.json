@@ -13,8 +13,7 @@
 		"build": "pnpm run clean && rollup -c",
 		"clean": "rm -rf dist",
 		"dev": "tsc --project tsconfig.build.json --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
-		"release": "pnpm run build && echo '\nPrepare `dist` directory...\n' && cp {*.md,LICENSE,package.json} dist && echo 'done' && cd dist && pnpm publish && cd .. && rm -rf dist",
-		"test": "tsc --noEmit --emitDeclarationOnly false --pretty"
+		"test": "tsc --noEmit --emitDeclarationOnly false --pretty && publint"
 	},
 	"dependencies": {
 		"core-js": "^3.19.1",
@@ -32,11 +31,15 @@
 		"glob": "^9.2.1",
 		"preact": "^10.5.13",
 		"prettier-package-json": "^2.6.0",
+		"publint": "^0.1.10",
 		"qunit": "^2.17.2",
 		"react": "^18.2.0",
 		"rollup": "^3.19.1",
 		"tslib": "^2.5.0",
 		"typescript": "^4.4.4"
+	},
+	"exports": {
+		".": "./dist"
 	},
 	"publishConfig": {
 		"access": "public"
