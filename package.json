@@ -13,7 +13,7 @@
 		"build": "pnpm run clean && rollup -c",
 		"clean": "rm -rf dist",
 		"dev": "tsc --project tsconfig.build.json --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
-		"test": "tsc --noEmit --emitDeclarationOnly false --pretty && publint"
+		"test": "tsc --noEmit --emitDeclarationOnly false --listFiles --pretty && publint"
 	},
 	"dependencies": {
 		"core-js": "^3.19.1",
