@@ -12,11 +12,11 @@ jobs:
 
             -   uses: actions/setup-node@v2-beta
                 with:
-                    node-version: '14'
+                    node-version: '18'
 
             -   uses: pnpm/action-setup@v1.2.1
                 with:
-                    version: '^5.8.0'
+                    version: '^7'
                     run_install: true
 
             -   name: Run Build
