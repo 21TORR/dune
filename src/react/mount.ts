@@ -1,7 +1,8 @@
-import {find} from './dom/traverse';
-import {ComponentFactory, h, render} from 'preact';
+import {find} from '../dom/traverse';
 import xtend from 'xtend';
-import {parseElementContentAsJson} from './json';
+import {parseElementContentAsJson} from '../json';
+import {ComponentType, createElement} from 'react';
+import {render} from 'react-dom';
 
 type MountableFunction = (element: HTMLElement, ...args: unknown[]) => unknown;
 interface MountableFunctionOptions {
@@ -39,7 +40,7 @@ export function mount (
  */
 export function mountJsx <ComponentProperty = Record<string, unknown>> (
 	selector: string|HTMLElement|HTMLElement[],
-	mountable: ComponentFactory,
+	mountable: ComponentType,
 	options: MountableJsxOptions<ComponentProperty> = {}
 ) : void
 {
@@ -78,7 +79,7 @@ export function mountJsx <ComponentProperty = Record<string, unknown>> (
 		parent.removeChild(element);
 
 		render(
-			h(mountable, params),
+			createElement(mountable, params),
 			target
 		);
 	});

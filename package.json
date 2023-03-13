@@ -24,20 +24,23 @@
 		"xtend": "^4.0.2"
 	},
 	"optionalDependencies": {
-		"preact": "^10.5.13"
+		"react": "^18.0",
+		"react-dom": "^18.0"
 	},
 	"devDependencies": {
 		"@rollup/plugin-typescript": "^11.0.0",
 		"@types/node": "^18.15.1",
 		"@types/qunit": "^2.19.4",
+		"@types/react": "^18.0.28",
+		"@types/react-dom": "^18.0.11",
 		"@types/xtend": "^4.0.4",
 		"fs-extra": "^11.1.0",
 		"glob": "^9.2.1",
-		"preact": "^10.5.13",
 		"prettier-package-json": "^2.8.0",
 		"publint": "^0.1.10",
 		"qunit": "^2.19.4",
-		"react": "^18.2.0",
+		"react": "^18.0",
+		"react-dom": "^18.0",
 		"rollup": "^3.19.1",
 		"tslib": "^2.5.0",
 		"typescript": "^4.9.5"
