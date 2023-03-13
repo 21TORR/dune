@@ -9,6 +9,9 @@
 		"url": "https://github.com/21TORR/dune.git"
 	},
 	"type": "module",
+	"exports": {
+		".": "./dist"
+	},
 	"scripts": {
 		"build": "pnpm run clean && rollup -c",
 		"clean": "rm -rf dist",
@@ -17,7 +20,7 @@
 		"test": "tsc --noEmit --emitDeclarationOnly false --listFiles --pretty && publint"
 	},
 	"dependencies": {
-		"core-js": "^3.19.1",
+		"core-js": "^3.29.1",
 		"xtend": "^4.0.2"
 	},
 	"optionalDependencies": {
@@ -25,25 +28,22 @@
 	},
 	"devDependencies": {
 		"@rollup/plugin-typescript": "^11.0.0",
-		"@types/node": "^16.11.6",
-		"@types/qunit": "^2.11.2",
+		"@types/node": "^18.15.1",
+		"@types/qunit": "^2.19.4",
 		"@types/xtend": "^4.0.4",
-		"fs-extra": "^10.0.0",
+		"fs-extra": "^11.1.0",
 		"glob": "^9.2.1",
 		"preact": "^10.5.13",
-		"prettier-package-json": "^2.6.0",
+		"prettier-package-json": "^2.8.0",
 		"publint": "^0.1.10",
-		"qunit": "^2.17.2",
+		"qunit": "^2.19.4",
 		"react": "^18.2.0",
 		"rollup": "^3.19.1",
 		"tslib": "^2.5.0",
-		"typescript": "^4.4.4"
+		"typescript": "^4.9.5"
 	},
 	"publishConfig": {
 		"access": "public"
-	},
-	"exports": {
-		".": "./dist"
 	},
 	"np": {
 		"branch": "1.x",
