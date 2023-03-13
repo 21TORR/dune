@@ -8,26 +8,23 @@ jobs:
 
         steps:
             -   name: Checkout Code
-                uses: actions/checkout@v2
+                uses: actions/checkout@v3
 
-            -   uses: actions/setup-node@v2-beta
+            -   uses: actions/setup-node@v3
                 with:
-                    node-version: '14'
+                    node-version: '18'
 
-            -   uses: pnpm/action-setup@v1.2.1
+            -   uses: pnpm/action-setup@v2
                 with:
-                    version: '^5.8.0'
+                    version: 'latest'
                     run_install: true
 
-            -   run: pnpm build
+            -   name: Run Build
+                run: pnpm build
 
             -   name: Run Tests
                 run: pnpm test
-                env:
-                    BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-                    BROWSERSTACK_KEY: ${{ secrets.BROWSERSTACK_KEY }}
 
-
-            -   name: Prettify package.json
-                run: ./node_modules/.bin/prettier-package-json --use-tabs --list-different
+            -   name: Run Lint
+                run: pnpm lint
 
