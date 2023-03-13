@@ -10,7 +10,9 @@
 	},
 	"type": "module",
 	"exports": {
-		".": "./dist"
+		"./*": {
+			"import": "./dist/*.mjs"
+		}
 	},
 	"scripts": {
 		"build": "pnpm run clean && rollup -c",
