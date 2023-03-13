@@ -1,3 +1,12 @@
+2.0.0-beta.0
+============
+
+* (bc) Use `react` instead of `preact` for JSX topics.
+* (internal) Improve build by removing custom logic and using `exports` in `package.json`
+* (bc) Build files to `*.mjs` and `*.d.ts`.
+* (improvement) Properly set `type: module` of this package.
+
+
 1.6.0
 =====
 
