@@ -1,0 +1,9 @@
+/.github
+/.gitignore
+/.idea
+/.npmignore
+/pnpm-lock.yaml
+/rollup.config.mjs
+/src
+/tests
+/tsconfig.json
