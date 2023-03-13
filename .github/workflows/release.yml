@@ -14,5 +14,6 @@ jobs:
         needs: [ci]
         runs-on: ubuntu-latest
         steps:
-            -   name: Test
-                run: echo 'test'
+            -   uses: JS-DevTools/npm-publish@v1
+                with:
+                    token: ${{ secrets.NPM_TOKEN }}
