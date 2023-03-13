@@ -1,5 +1,5 @@
 import QUnit from "qunit";
-import {mountJsx} from '../../../src/mount';
+import {mountJsx} from '../../../src/react/mount';
 import {findFirst} from '../../../src/dom/traverse';
 
 QUnit.module("mount::mountJsx()");

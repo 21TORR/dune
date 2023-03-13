@@ -1,5 +1,5 @@
 import QUnit from "qunit";
-import {mount} from '../../../src/mount';
+import {mount} from '../../../src/react/mount';
 
 QUnit.module("mount::mount()");
 
