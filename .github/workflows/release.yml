@@ -8,7 +8,7 @@ on:
 
 jobs:
     ci:
-        uses: "./ci.yml"
+        uses: "./ci.yml@latest"
     deploy:
         name: deploy
         needs: [ci]
