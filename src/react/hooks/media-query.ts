@@ -13,9 +13,28 @@ export function useMediaQuery (query: string) : boolean
 		setActive(mediaQuery.matches);
 
 		const updater = (event: MediaQueryListEvent) => setActive(event.matches);
-		mediaQuery.addEventListener("change", updater);
 
-		return () => mediaQuery.removeEventListener("change", updater);
+		// some old browsers doesn't support addEventListener on MediaQueryList, so we use a fallback for them
+		if (mediaQuery.addEventListener)
+		{
+			mediaQuery.addEventListener("change", updater);
+		}
+		else
+		{
+			mediaQuery.addListener(updater);
+		}
+
+		return () =>
+		{
+			if (mediaQuery.removeEventListener)
+			{
+				mediaQuery.removeEventListener("change", updater);
+			}
+			else
+			{
+				mediaQuery.removeListener(updater);
+			}
+		};
 	}, [query]);
 
 	return isActive;
