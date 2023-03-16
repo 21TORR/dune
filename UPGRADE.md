@@ -2,4 +2,4 @@
 ============
 
 * The import path for `mount()` has changed `/mount.js -> /react/mount.mjs`.
-* The import path for `useDebounced` has cahnged `/debounce -> /react/hooks/debounce`.
+* The import path for `useDebounced` has changed `/debounce -> /react/hooks/debounce`.
