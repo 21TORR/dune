@@ -1,3 +1,10 @@
+2.0.0-beta.1
+============
+
+* (bc) move `useDebounced`.
+* (feature) add `useMediaQuery`.
+
+
 2.0.0-beta.0
 ============
 
