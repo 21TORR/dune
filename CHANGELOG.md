@@ -1,3 +1,9 @@
+2.0.0-beta.2
+============
+
+* (feature) Add `handleHttpBasicAuth()`.
+
+
 2.0.0-beta.1
 ============
 
