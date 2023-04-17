@@ -3,6 +3,7 @@
 
 * (bc) move `useDebounced`.
 * (feature) add `useMediaQuery`.
+* (improvement) Add explicit `types` export.
 
 
 2.0.0-beta.0

@@ -11,6 +11,7 @@
 	"type": "module",
 	"exports": {
 		"./*": {
+			"types": "./dist/*.d.ts",
 			"import": "./dist/*.mjs"
 		}
 	},
