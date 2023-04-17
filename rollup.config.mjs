@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import {globSync} from "glob";
 import path from "node:path";
 import {fileURLToPath} from "url";
+import cleanup from 'rollup-plugin-cleanup';
 
 export default {
 	input: Object.fromEntries(
@@ -24,5 +25,13 @@ export default {
 	},
 	plugins: [
 		typescript(),
+		cleanup({
+			maxEmptyLines: 2,
+		}),
+	],
+	external: [
+		"react",
+		"react-dom",
+		"xtend",
 	],
 };
