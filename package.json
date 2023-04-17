@@ -20,6 +20,7 @@
 		"clean": "rm -rf dist",
 		"dev": "tsc --project tsconfig.build.json --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
 		"lint": "prettier-package-json --use-tabs --list-different",
+		"prepublishOnly": "pnpm run build",
 		"test": "tsc --noEmit --emitDeclarationOnly false --listFiles --pretty && pnpm run test:publish",
 		"test:publish": "pnpm run build && publint"
 	},
