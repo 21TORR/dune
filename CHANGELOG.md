@@ -1,15 +1,10 @@
-2.0.0-beta.2
-============
-
-* (feature) Add `handleHttpBasicAuth()`.
-
-
 2.0.0-beta.1
 ============
 
 * (bc) move `useDebounced`.
 * (feature) add `useMediaQuery`.
 * (improvement) Add explicit `types` export.
+* (feature) Add `handleHttpBasicAuth()`.
 
 
 2.0.0-beta.0
