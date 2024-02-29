@@ -1,3 +1,9 @@
+2.0.0-beta.2
+============
+
+* (internal) Change the way the package is published.
+
+
 2.0.0-beta.1
 ============
 

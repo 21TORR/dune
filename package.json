@@ -1,6 +1,6 @@
 {
 	"name": "@21torr/dune",
-	"version": "2.0.0-beta.1",
+	"version": "2.0.0-beta.2",
 	"description": "A library of commonly used JS functionality.",
 	"license": "MIT",
 	"homepage": "https://github.com/21TORR/dune",
@@ -9,12 +9,6 @@
 		"url": "https://github.com/21TORR/dune.git"
 	},
 	"type": "module",
-	"exports": {
-		"./*": {
-			"types": "./dist/*.d.ts",
-			"import": "./dist/*.mjs"
-		}
-	},
 	"scripts": {
 		"build": "pnpm run clean && rollup -c",
 		"clean": "rm -rf dist",
@@ -26,6 +20,7 @@
 	},
 	"dependencies": {
 		"core-js": "^3.29.1",
+		"rollup-plugin-copy": "^3.5.0",
 		"xtend": "^4.0.2"
 	},
 	"optionalDependencies": {
@@ -55,9 +50,5 @@
 	},
 	"publishConfig": {
 		"access": "public"
-	},
-	"np": {
-		"branch": "1.x",
-		"contents": "dist"
 	}
 }

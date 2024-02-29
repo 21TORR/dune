@@ -1,8 +1,9 @@
 import typescript from '@rollup/plugin-typescript';
 import {globSync} from "glob";
 import path from "node:path";
-import {fileURLToPath} from "url";
+import {fileURLToPath} from "node:url";
 import cleanup from 'rollup-plugin-cleanup';
+import copy from 'rollup-plugin-copy';
 
 export default {
 	input: Object.fromEntries(
@@ -27,6 +28,22 @@ export default {
 		typescript(),
 		cleanup({
 			maxEmptyLines: 2,
+		}),
+		copy({
+			targets: [
+				{
+					src: "{CHANGELOG,README,UPGRADE}.md",
+					dest: "dist",
+				},
+				{
+					src: "LICENSE",
+					dest: "dist",
+				},
+				{
+					src: "package.json",
+					dest: "dist",
+				},
+			],
 		}),
 	],
 	external: [
