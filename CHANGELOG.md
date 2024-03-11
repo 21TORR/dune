@@ -1,3 +1,9 @@
+2.0.0
+=====
+
+* (feature) Add `AnchorNavigation`.
+
+
 2.0.0-beta.2
 ============
 
