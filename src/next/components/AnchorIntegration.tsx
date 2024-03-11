@@ -52,7 +52,7 @@ export function AnchorIntegration (props: AnchorIntegrationProps): ReactElement 
 					behavior: "smooth",
 				});
 			},
-			props.timeout ?? 250
+			props.timeout ?? 250,
 		);
 	}, [pathname, props.timeout]);
 
