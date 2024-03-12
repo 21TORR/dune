@@ -2,6 +2,7 @@
 =====
 
 * (bug) Support all allowed syntaxes in `AnchorIntegration`.
+* (improvement) Widen allowed type in JSON functions.
 
 
 2.0.0

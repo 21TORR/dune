@@ -26,7 +26,7 @@ export function safeParseJson <DataType = unknown> (value?: string|null) : DataT
 /**
  * Parses the content of the given element as JSON
  */
-export function parseElementContentAsJson <DataType = unknown> (element: HTMLElement|null) : DataType|null
+export function parseElementContentAsJson <DataType = unknown> (element: Element|null) : DataType|null
 {
 	return null !== element
 		? safeParseJson<DataType>(
