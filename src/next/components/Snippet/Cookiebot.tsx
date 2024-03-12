@@ -1,5 +1,5 @@
 import React, {ReactElement} from "react";
-import Script from "next/script.js";
+import Script from "next/script";
 
 export type ConsentManagerProps = Readonly<{
 	id: string;

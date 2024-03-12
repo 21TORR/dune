@@ -1,4 +1,4 @@
-import type {NextRequest} from "next/server.js";
+import type {NextRequest} from "next/server";
 
 /**
  * Handles basic authentication

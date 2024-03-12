@@ -1,21 +1,20 @@
 {
 	"compilerOptions": {
-		"target": "es2022",
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": false,
 		"declaration": true,
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
+		"isolatedModules": true,
+		"jsx": "react",
 		"lib": [
 			"dom",
 			"dom.iterable",
 			"es2022"
 		],
-		"isolatedModules": true,
-		"jsx": "react",
-		"module": "NodeNext",
+		"module": "ESNext",
 		"moduleDetection": "force",
-		"moduleResolution": "NodeNext",
+		"moduleResolution": "Bundler",
 		"noImplicitThis": true,
 		"noUncheckedIndexedAccess": true,
 		"outDir": "dist",
@@ -23,7 +22,8 @@
 		"resolveJsonModule": true,
 		"rootDir": "src",
 		"skipLibCheck": true,
-		"sourceMap": false
+		"sourceMap": false,
+		"target": "es2022"
 	},
 	"include": [
 		"src/**/*.tsx",
