@@ -2,6 +2,7 @@
 =====
 
 * (feature) Add `AnchorNavigation`.
+* (bc) The dist file names changed back to `.js`.
 
 
 2.0.0-beta.2

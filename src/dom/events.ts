@@ -1,6 +1,6 @@
-import {splitStringValue} from '../lib/string';
-import {closest} from './traverse';
-import {createEvent} from '../lib/events';
+import {splitStringValue} from '../lib/string.js';
+import {closest} from './traverse.js';
+import {createEvent} from '../lib/events.js';
 
 type EventHandler <EventType extends Event> = (event: EventType) => any;
 type DelegatedEventHandler <EventType extends Event, ElementType extends HTMLElement> = (event: EventType, delegateTarget: ElementType) => any;
