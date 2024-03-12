@@ -15,21 +15,22 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout Code
-                uses: actions/checkout@v3
+                uses: actions/checkout@v4
 
-            -   uses: actions/setup-node@v3
+            -   uses: actions/setup-node@v4
                 with:
                     node-version: '18'
 
-            -   uses: pnpm/action-setup@v2
+            -   uses: pnpm/action-setup@v3
                 with:
                     version: 'latest'
                     run_install: true
 
             -   name: Run Build
-                run: pnpm build
+                run: pnpm run prepare-release
 
             -   name: Publish package
-                uses: JS-DevTools/npm-publish@v1
+                working-directory: dist
+                uses: JS-DevTools/npm-publish@v3
                 with:
                     token: ${{ secrets.NPM_TOKEN }}
