@@ -1,25 +1,29 @@
 {
 	"compilerOptions": {
+		"target": "es2022",
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": false,
 		"declaration": true,
-		"emitDeclarationOnly": true,
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"lib": [
 			"dom",
-			"es5",
-			"es2015",
-			"es2016"
+			"dom.iterable",
+			"es2022"
 		],
-		"moduleResolution": "node",
+		"isolatedModules": true,
+		"jsx": "react",
+		"module": "NodeNext",
+		"moduleDetection": "force",
+		"moduleResolution": "NodeNext",
 		"noImplicitThis": true,
+		"noUncheckedIndexedAccess": true,
 		"outDir": "dist",
 		"removeComments": false,
+		"resolveJsonModule": true,
 		"rootDir": "src",
 		"skipLibCheck": true,
-		"sourceMap": false,
-		"jsx": "react"
+		"sourceMap": false
 	},
 	"include": [
 		"src/**/*.tsx",

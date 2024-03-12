@@ -1,4 +1,4 @@
-import {elementMatches, fetchSiblings} from './lib/traverse-helpers';
+import {elementMatches, fetchSiblings} from './lib/traverse-helpers.js';
 
 
 /**

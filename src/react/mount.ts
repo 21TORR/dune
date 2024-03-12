@@ -1,6 +1,6 @@
-import {find} from '../dom/traverse';
+import {find} from '../dom/traverse.js';
 import xtend from 'xtend';
-import {parseElementContentAsJson} from '../json';
+import {parseElementContentAsJson} from '../json.js';
 import {ComponentType, createElement} from 'react';
 import {render} from 'react-dom';
 
