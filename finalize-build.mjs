@@ -1,4 +1,3 @@
-
 import {copy} from "fs-extra";
 
 console.log("Finalizing build...");

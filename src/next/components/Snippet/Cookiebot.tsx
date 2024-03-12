@@ -1,4 +1,4 @@
-import {ReactElement} from "react";
+import React, {ReactElement} from "react";
 import Script from "next/script.js";
 
 export type ConsentManagerProps = Readonly<{
