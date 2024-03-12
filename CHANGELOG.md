@@ -1,3 +1,9 @@
+2.0.2
+=====
+
+Fix invalid version numbers.
+
+
 2.0.1
 =====
 
