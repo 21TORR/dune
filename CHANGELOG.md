@@ -1,7 +1,14 @@
+2.0.1
+=====
+
+* (bug) Support all allowed syntaxes in `AnchorIntegration`.
+* (improvement) Widen allowed type in JSON functions.
+
+
 2.0.0
 =====
 
-* (feature) Add `AnchorNavigation`.
+* (feature) Add `AnchorIntegration`.
 * (bc) The dist file names changed back to `.js`.
 
 
