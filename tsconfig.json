@@ -18,7 +18,8 @@
 		"removeComments": false,
 		"rootDir": "src",
 		"skipLibCheck": true,
-		"sourceMap": false
+		"sourceMap": false,
+		"jsx": "react"
 	},
 	"include": [
 		"src/**/*.tsx",
