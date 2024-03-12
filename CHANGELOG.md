@@ -7,7 +7,7 @@
 2.0.0
 =====
 
-* (feature) Add `AnchorNavigation`.
+* (feature) Add `AnchorIntegration`.
 * (bc) The dist file names changed back to `.js`.
 
 
