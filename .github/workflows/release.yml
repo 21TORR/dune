@@ -30,7 +30,7 @@ jobs:
                 run: pnpm run prepare-release
 
             -   name: Publish package
-                working-directory: dist
                 uses: JS-DevTools/npm-publish@v3
                 with:
                     token: ${{ secrets.NPM_TOKEN }}
+                    package: dist
