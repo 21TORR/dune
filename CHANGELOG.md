@@ -2,6 +2,8 @@
 =====
 
 * (feature) Add `ClientOnlyPortal`.
+* (feature) Add Cookiebot hook.
+* (feature) Add `<Cookiebot>` snippet component.
 
 
 2.0.2

@@ -1,5 +1,5 @@
-import {off, on} from './dom/events.js';
-import {isChildOf} from './dom/traverse.js';
+import {off, on} from './dom/events';
+import {isChildOf} from './dom/traverse';
 
 export interface DismissibleContainerDirector {
 	(): void;

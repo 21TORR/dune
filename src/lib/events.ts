@@ -1,4 +1,4 @@
-import {EventName} from '../dom/events.js';
+import {EventName} from '../dom/events';
 
 /**
  * Creates a new custom event

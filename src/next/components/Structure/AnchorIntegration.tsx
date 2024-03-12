@@ -1,7 +1,7 @@
 "use client";
 
 import React, {ReactElement, useEffect} from "react";
-import {usePathname} from "next/navigation.js";
+import {usePathname} from "next/navigation";
 
 export type AnchorIntegrationProps = Readonly<{
 	timeout?: number;
