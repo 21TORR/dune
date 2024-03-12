@@ -37,7 +37,8 @@ export function AnchorIntegration (props: AnchorIntegrationProps): ReactElement 
 			return;
 		}
 
-		const element = document.querySelector(hash);
+		// we can't use the `#..` directly, as an id allows syntax that the selector doesn't support.
+		const element = document.querySelector(`[id="${hash.slice(1)}"]`);
 
 		if (!element)
 		{

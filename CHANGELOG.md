@@ -1,3 +1,9 @@
+2.0.1
+=====
+
+* (bug) Support all allowed syntaxes in `AnchorIntegration`.
+
+
 2.0.0
 =====
 
