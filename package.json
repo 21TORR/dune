@@ -1,6 +1,5 @@
 {
 	"name": "@21torr/dune",
-	"version": "2.0.2",
 	"description": "A library of commonly used JS functionality.",
 	"license": "MIT",
 	"homepage": "https://github.com/21TORR/dune",
@@ -15,7 +14,7 @@
 		"dev": "tsc --project tsconfig.build.json --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
 		"lint": "prettier-package-json --use-tabs --list-different",
 		"prepare-release": "pnpm run build && cd dist && npm pack --dry-run && publint",
-		"test": "pnpm build && cd dist && npm pack --dry-run && publint"
+		"test": "pnpm run build && cd dist && pnpm version '2.0.0-dummy' --no-git-tag-version && npm pack --dry-run && publint"
 	},
 	"dependencies": {
 		"xtend": "^4.0.2"

@@ -26,6 +26,9 @@ jobs:
                     version: 'latest'
                     run_install: true
 
+            -   name: Set version number in package.json
+                run: pnpm version from-git --no-git-tag-version
+
             -   name: Run Build
                 run: pnpm run prepare-release
 
