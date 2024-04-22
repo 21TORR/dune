@@ -1,7 +1,9 @@
-2.1.2 (unreleased)
+2.2.0 (unreleased)
 =====
 
 * (improvement) Add `isAbortError()`.
+* (feature) Add Usercentrics hook.
+* (feature) Add `<Usercentrics>` snippet component.
 
 
 2.1.1
