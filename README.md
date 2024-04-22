@@ -12,9 +12,9 @@ Development
 ### Releases
 
 1. Check the CHANGELOG, to ensure that the next version number is correct according to semver and there is no "(unreleased)" after the next version number.
-2. Commit these changes, commit message "Release x.y.z"
-3. Push these changes
-4. Tag the latest commit with "x.y.z"
-5. Push the tag.
+2. If necessary, commit these changes, commit message "Release x.y.z".
+3. Tag the latest commit with "x.y.z".
+4. Push commit + tag.
+5. Create a release in GitHub.
 
 Publishing to npm is done automatically in a GitHub action.

@@ -1,3 +1,9 @@
+2.1.2 (unreleased)
+=====
+
+* (improvement) Add `isAbortError()`.
+
+
 2.1.1
 =====
 
