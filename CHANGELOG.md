@@ -1,3 +1,9 @@
+2.2.1 (unreleased)
+=====
+
+* (improvement) Remove internal `elementMatches()` helper.
+
+
 2.2.0
 =====
 

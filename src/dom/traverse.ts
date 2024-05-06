@@ -1,4 +1,4 @@
-import {elementMatches, fetchSiblings} from './lib/traverse-helpers';
+import {fetchSiblings} from './lib/traverse-helpers';
 
 
 /**
@@ -32,7 +32,7 @@ export function children <ElementType extends HTMLElement = HTMLElement> (parent
 
 	while (child)
 	{
-		if (elementMatches(child, selector))
+		if (selector === null || child.matches(selector))
 		{
 			list.push(child as ElementType);
 		}
@@ -84,7 +84,7 @@ export function closest <ElementType extends HTMLElement> (element: HTMLElement|
 
 	while (null !== parent && rootElement !== parent)
 	{
-		if (elementMatches(parent, selector))
+		if (parent.matches(selector))
 		{
 			return parent as ElementType;
 		}
