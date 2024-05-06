@@ -110,6 +110,8 @@ export function delegate <EventType extends Event, ElementType extends HTMLEleme
 	return onOff(element, type, wrappedHandler);
 }
 
+
+
 /**
  * Registers an event listener on the given element and returns the function to remove it
  */
@@ -138,7 +140,6 @@ export function trigger (
 	data?: unknown
 ) : void
 {
-	// @legacy IE 11 doesn't support the global CustomEvent
 	if (!element)
 	{
 		return;

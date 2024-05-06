@@ -7,7 +7,7 @@
 export function fetchSiblings<ElementType extends HTMLElement> (
 	element: HTMLElement,
 	selector: string|null,
-	accessor: "previousElementSibling" | "nextElementSibling"
+	accessor: "previousElementSibling" | "nextElementSibling",
 ) : ElementType[]
 {
 	let sibling = element[accessor];
