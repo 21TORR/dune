@@ -2,6 +2,7 @@
 =====
 
 * (improvement) Remove internal `elementMatches()` helper.
+* (improvement) Remove outdated `CustomEvent` workaround.
 
 
 2.2.0
