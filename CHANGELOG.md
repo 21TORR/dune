@@ -3,6 +3,7 @@
 
 * (improvement) Remove internal `elementMatches()` helper.
 * (improvement) Remove outdated `CustomEvent` workaround.
+* (deprecation) Deprecate `createEvent` helper.
 * (improvement) Remove outdated `MediaQueryList.addEventListener()` workaround.
 
 
