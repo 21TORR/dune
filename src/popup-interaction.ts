@@ -46,7 +46,7 @@ export function registerBodyClickHandler (allowedClickTargets: HTMLElement[], on
 export function initDismissibleContainer (
 	trigger: HTMLElement|HTMLElement[],
 	allowedContainers: HTMLElement[],
-	callback: (isActive: boolean) => void
+	callback: (isActive: boolean) => void,
 ) : DismissibleContainerDirector
 {
 	let globalHandler: (() => void)|null = null;
