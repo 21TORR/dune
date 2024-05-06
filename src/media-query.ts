@@ -18,14 +18,7 @@ export function matchMediaQuery (query: string): MediaQueryMatcher
 	let listeners: MediaQueryChangeListener[] = [];
 	const update = (event: MediaQueryListEvent) => listeners.forEach(listener => listener(event.matches));
 
-	if (media.addEventListener)
-	{
-		media.addEventListener("change", update);
-	}
-	else
-	{
-		media.addListener(update);
-	}
+	media.addEventListener("change", update);
 
 	return {
 		/**
@@ -72,15 +65,7 @@ export function matchMediaQuery (query: string): MediaQueryMatcher
 		destroy (): void
 		{
 			listeners = [];
-
-			if (media.removeEventListener)
-			{
-				media.removeEventListener("change", update);
-			}
-			else
-			{
-				media.removeListener(update);
-			}
+			media.removeEventListener("change", update);
 		}
 	};
 }
