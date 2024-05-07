@@ -1,3 +1,10 @@
+2.2.2
+=====
+
+* (deprecation) Deprecate `matchMediaQuery()`, use `window.matchMedia()` directly.
+* (deprecation) Deprecate `addConsecutiveClasses()`, use Framer Motion or a different animation library instead.
+
+
 2.2.1
 =====
 

@@ -1,5 +1,7 @@
 /**
  * Adds two classes in consecutive animation frames.
+ *
+ * @deprecated use Framer Motion or a different animation library instead
  */
 export function addConsecutiveClasses (
 	element: HTMLElement,

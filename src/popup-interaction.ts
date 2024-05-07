@@ -2,6 +2,9 @@ import {off, on} from './dom/events';
 import {isChildOf} from './dom/traverse';
 
 export interface DismissibleContainerDirector {
+	/**
+	 * Close function
+	 */
 	(): void;
 	destroy(): void;
 }
@@ -12,7 +15,10 @@ export interface DismissibleContainerDirector {
  *
  * Returns a callback to remove the listener.
  */
-export function registerBodyClickHandler (allowedClickTargets: HTMLElement[], onInvalidTargetClick: () => void) : () => void
+export function registerBodyClickHandler (
+	allowedClickTargets: HTMLElement[],
+	onInvalidTargetClick: () => void,
+) : () => void
 {
 	let handler = (event: Event) => {
 		for (let i = 0; i < allowedClickTargets.length; i++)
