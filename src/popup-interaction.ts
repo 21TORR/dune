@@ -2,6 +2,9 @@ import {off, on} from './dom/events';
 import {isChildOf} from './dom/traverse';
 
 export interface DismissibleContainerDirector {
+	/**
+	 * Close function
+	 */
 	(): void;
 	destroy(): void;
 }
