@@ -1,6 +1,5 @@
 import {splitStringValue} from '../lib/string';
 import {closest} from './traverse';
-import {createEvent} from '../lib/events';
 
 type EventHandler <EventType extends Event> = (event: EventType) => any;
 type DelegatedEventHandler <EventType extends Event, ElementType extends HTMLElement> = (event: EventType, delegateTarget: ElementType) => any;
@@ -16,7 +15,7 @@ export function on <EventType extends Event> (
 	element: ExtendedEventTarget,
 	type: ExtendedEventName,
 	handler: EventHandler<EventType>,
-	options: boolean|AddEventListenerOptions = false
+	options: boolean|AddEventListenerOptions = false,
 ) : void
 {
 	const elements = Array.isArray(element) ? element : [element];
@@ -39,7 +38,7 @@ export function on <EventType extends Event> (
 export function off (
 	element: ExtendedEventTarget,
 	type: ExtendedEventName,
-	handler: EventHandler<any>
+	handler: EventHandler<any>,
 ) : void
 {
 
@@ -65,7 +64,7 @@ export function off (
 export function once <EventType extends Event> (
 	element: EventTarget|null,
 	type: EventName,
-	handler: EventHandler<EventType>
+	handler: EventHandler<EventType>,
 ) : UnregisterEventCallback
 {
 	if (!element)
@@ -94,7 +93,7 @@ export function delegate <EventType extends Event, ElementType extends HTMLEleme
 	element: EventTarget|null,
 	selector: string,
 	type: EventName,
-	handler: DelegatedEventHandler<EventType, ElementType>
+	handler: DelegatedEventHandler<EventType, ElementType>,
 ) : UnregisterEventCallback
 {
 	const wrappedHandler = (event: EventType) =>
@@ -110,13 +109,15 @@ export function delegate <EventType extends Event, ElementType extends HTMLEleme
 	return onOff(element, type, wrappedHandler);
 }
 
+
+
 /**
  * Registers an event listener on the given element and returns the function to remove it
  */
 export function onOff <EventType extends Event> (
 	element: EventTarget|null,
 	type: EventName,
-	handler: EventHandler<EventType>
+	handler: EventHandler<EventType>,
 ) : UnregisterEventCallback
 {
 	if (!element)
@@ -135,16 +136,15 @@ export function onOff <EventType extends Event> (
 export function trigger (
 	element: EventTarget|null,
 	type: EventName,
-	data?: unknown
+	data?: unknown,
 ) : void
 {
-	// @legacy IE 11 doesn't support the global CustomEvent
 	if (!element)
 	{
 		return;
 	}
 
-	element.dispatchEvent(createEvent(type, {
+	element.dispatchEvent(new CustomEvent(type, {
 		bubbles: true,
 		cancelable: true,
 		detail: data,

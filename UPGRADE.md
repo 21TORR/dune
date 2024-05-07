@@ -1,4 +1,10 @@
-1.x to 2.0.0
+2.x to 3.0
+==========
+
+* The `createEvent` helper was removed, use `new CustomEvent()` directly.
+
+
+1.x to 2.0
 ============
 
 * The import path for `mount()` has changed `/mount.js -> /react/mount.mjs`.

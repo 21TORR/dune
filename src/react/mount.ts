@@ -24,7 +24,7 @@ interface MountableJsxOptions <ComponentProperty> {
 export function mount (
 	selector: string|HTMLElement|HTMLElement[],
 	mountable: MountableFunction,
-	options: MountableFunctionOptions = {}
+	options: MountableFunctionOptions = {},
 ) : void
 {
 	const elements = typeof selector === "string"
@@ -41,7 +41,7 @@ export function mount (
 export function mountJsx <ComponentProperty = Record<string, unknown>> (
 	selector: string|HTMLElement|HTMLElement[],
 	mountable: ComponentType,
-	options: MountableJsxOptions<ComponentProperty> = {}
+	options: MountableJsxOptions<ComponentProperty> = {},
 ) : void
 {
 	const elements = typeof selector === "string"
