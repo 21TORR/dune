@@ -11,6 +11,8 @@ export interface MediaQueryMatcher
 
 /**
  * Creates a new media query matcher
+ *
+ * @deprecated just use `matchMedia` directly.
  */
 export function matchMediaQuery (query: string): MediaQueryMatcher
 {

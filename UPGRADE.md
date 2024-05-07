@@ -2,6 +2,7 @@
 ==========
 
 * The `createEvent` helper was removed, use `new CustomEvent()` directly.
+* Removed `matchMediaQuery()`, use `window.matchMedia()` directly.
 
 
 1.x to 2.0

@@ -1,3 +1,9 @@
+2.2.2
+=====
+
+* (deprecation) Deprecate `matchMediaQuery()`, use `window.matchMedia()` directly.
+
+
 2.2.1
 =====
 
