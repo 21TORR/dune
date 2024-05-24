@@ -8,6 +8,7 @@
 *.d.ts
 *.js
 !/@types/*.d.ts
+!/src/build-config/*.js
 
 # don't ignore test files
 !/tests/**/*.js

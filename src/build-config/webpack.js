@@ -1,4 +1,4 @@
-exports.registerSvgWebpackLoader = (config) =>
+export const registerSvgWebpackLoader = (config) =>
 {
 	// Grab the existing rule that handles SVG imports
 	const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg") && rule.resourceQuery?.toString() !== "/raw/");
