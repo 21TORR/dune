@@ -1,3 +1,9 @@
+2.3.0
+=====
+
+* (feature) Add common Webpack Build Config for NextJS projects and Storybook for a shared SVGR integration. 
+
+
 2.2.1
 =====
 

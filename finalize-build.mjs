@@ -6,7 +6,11 @@ console.log("");
 
 console.log("Copying additional files");
 
+
 await Promise.all(
+	[
+		copy("src/build-config/webpack.js", `dist/build-config/webpack.js`),
+	],
 	[
 		"CHANGELOG.md",
 		"README.md",
