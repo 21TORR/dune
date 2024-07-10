@@ -1,7 +1,5 @@
 /**
- * Splits locale by hyphen
- *
- * @internal
+ * Separates a locale into country and language parts
  */
 export function splitLocale (locale : string) : {language: string, country: string|null} | null
 {
