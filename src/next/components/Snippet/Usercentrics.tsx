@@ -1,6 +1,6 @@
 import React, {ReactElement} from "react";
 import Script from "next/script";
-import {splitLocale} from "../../../lib/locale";
+import {parseLocale} from "../../../lib/locale";
 
 export type UsercentricsProps = Readonly<{
 	id: string;
@@ -11,7 +11,7 @@ export type UsercentricsProps = Readonly<{
 export function Usercentrics (props: UsercentricsProps): ReactElement | null
 {
 	const isProd = true === props.production;
-	const language = splitLocale(props.locale)?.language ?? undefined;
+	const language = parseLocale(props.locale)?.language ?? undefined;
 
 	return (
 		<Script

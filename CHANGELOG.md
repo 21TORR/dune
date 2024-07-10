@@ -1,3 +1,11 @@
+2.2.2
+=====
+
+* (improvement) Add more parameters for `<Usercentrics>` component.
+* (improvement) Add `parseLocale` function.
+
+
+
 2.2.1
 =====
 
