@@ -5,6 +5,8 @@ import {useEffect, useState} from "react";
 type WindowWithUsercentrics = Window & Readonly<{
 	UC_UI?: {
 		showFirstLayer(): void;
+		showSecondLayer(): void;
+		restartEmbeddings(): void;
 	};
 }>;
 
@@ -20,6 +22,8 @@ type UsercentricsEvent = CustomEvent<{
 
 type UsercentricsSettings = Readonly<{
 	openConsentManager(): void;
+	showSecondLayer(): void;
+	restartEmbeddings(): void;
 	hasAnyConsent: boolean;
 	/**
 	 * Contains all categories with consent apart from the essential categories
@@ -67,6 +71,14 @@ export function useUsercentrics () : UsercentricsSettings
 		openConsentManager (): void
 		{
 			(window as WindowWithUsercentrics).UC_UI?.showFirstLayer();
+		},
+		showSecondLayer (): void
+		{
+			(window as WindowWithUsercentrics).UC_UI?.showSecondLayer();
+		},
+		restartEmbeddings (): void
+		{
+			(window as WindowWithUsercentrics).UC_UI?.restartEmbeddings();
 		},
 	}
 }
