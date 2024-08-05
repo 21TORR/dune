@@ -40,7 +40,7 @@ export function mount (
  */
 export function mountJsx <ComponentProperty = Record<string, unknown>> (
 	selector: string|HTMLElement|HTMLElement[],
-	mountable: ComponentType,
+	mountable: ComponentType<Partial<ComponentProperty>>,
 	options: MountableJsxOptions<ComponentProperty> = {},
 ) : void
 {

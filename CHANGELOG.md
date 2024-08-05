@@ -1,3 +1,9 @@
+2.2.3
+=====
+
+* (improvement) Improve Types of `mountJsx`.
+
+
 2.2.2
 =====
 
