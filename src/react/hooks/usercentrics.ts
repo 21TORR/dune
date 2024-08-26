@@ -80,5 +80,5 @@ export function useUsercentrics () : UsercentricsSettings
 		{
 			(window as WindowWithUsercentrics).UC_UI?.restartEmbeddings();
 		},
-	}
+	};
 }
