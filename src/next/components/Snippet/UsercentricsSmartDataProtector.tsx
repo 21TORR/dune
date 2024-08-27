@@ -20,12 +20,25 @@ type UsercentricsSerivceProviderKey = typeof USERCENTRICS_SERVICE_PROVIDER_KEYS[
 type HTMLSelector = string;
 
 type UsercentricsSmartDataProtectorProps = Readonly<{
+	/**
+	 * Define here the elements that cannot be automatically recognized by Usercentrics, such as Google Maps in a div, instead of iframe.
+	 */
 	elements?: Record<UsercentricsSerivceProviderKey, HTMLSelector>;
+	/**
+	 * Define the service provider keys here for which the page should be reloaded if the related consent changes.
+	 * If the key is already used in `elements`, it does not need to be added here again.
+	 */
+	reloadKeys?: UsercentricsSerivceProviderKey[],
 }>;
 
 export function UsercentricsSmartDataProtector (props: UsercentricsSmartDataProtectorProps): ReactElement | null
 {
-	const keys = props.elements ? Object.keys(props.elements) : [];
+	const keys = new Set(
+		[
+			...(props.elements ? Object.keys(props.elements) : []),
+			...(props.reloadKeys ?? []),
+		],
+	);
 
 	return (
 		<Script
@@ -35,12 +48,16 @@ export function UsercentricsSmartDataProtector (props: UsercentricsSmartDataProt
 			{
 				const uc = (window as WindowWithUsercentricsSmartDataProtector).uc;
 
-				if (!props.elements || !uc)
+				if (!uc)
 				{
+					console.warn("uc isn't defined");
 					return;
 				}
 
-				uc.blockElements(props.elements);
+				if (props.elements)
+				{
+					uc.blockElements(props.elements);
+				}
 
 				keys.forEach((key) =>
 				{
