@@ -35,7 +35,7 @@ export function UsercentricsSmartDataProtector (props: UsercentricsSmartDataProt
 {
 	const keys = new Set(
 		[
-			...(props.elements ? Object.keys(props.elements) : []),
+			...(Object.keys(props.elements ?? {})),
 			...(props.reloadKeys ?? []),
 		],
 	);
