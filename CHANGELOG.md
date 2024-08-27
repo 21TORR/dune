@@ -1,3 +1,9 @@
+2.3.0
+=====
+
+* (feature) Add `<UsercentricsSmartDataProtector>` snippet component.
+
+
 2.2.3
 =====
 
