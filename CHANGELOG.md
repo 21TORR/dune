@@ -1,3 +1,9 @@
+2.3.1
+=====
+
+* (improvement) Add method `integrateHttpBasicAuth()` for handling a list of Http Basic Auth Credentials
+* (deprecation) Deprecate `handleHttpBasicAuth` method
+
 2.3.0
 =====
 

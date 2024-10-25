@@ -2,6 +2,7 @@
 ==========
 
 * The `createEvent` helper was removed, use `new CustomEvent()` directly.
+* The `handleHttpBasicAuth()` method was removed, use `integrateHttpBasicAuth()` directly
 
 
 1.x to 2.0
