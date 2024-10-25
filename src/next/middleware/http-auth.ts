@@ -20,7 +20,7 @@ export function handleHttpBasicAuth (
 {
 	return integrateHttpBasicAuth(
 		request,
-		[{username: username, password: password}],
+		[{username, password}],
 		responseText,
 		realmLabel
 	);
@@ -45,12 +45,12 @@ export function integrateHttpBasicAuth (
 			.toString()
 			.split(":");
 
-		users.forEach((item) => {
-			if (givenUser === item.username && givenPassword === item.password)
-			{
-				return;
-			}
-		})
+		const hasValidUser = users.some((item : Credentials) => givenUser === item.username && givenPassword === item.password);
+
+		if (hasValidUser)
+		{
+			return;
+		}
 	}
 
 	return new Response(responseText, {
