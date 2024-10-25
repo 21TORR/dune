@@ -45,7 +45,7 @@ export function integrateHttpBasicAuth (
 			.toString()
 			.split(":");
 
-		const hasValidUser = users.some((item : Credentials) => givenUser === item.username && givenPassword === item.password);
+		const hasValidUser = users.some(item => givenUser === item.username && givenPassword === item.password);
 
 		if (hasValidUser)
 		{
