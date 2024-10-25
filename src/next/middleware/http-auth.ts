@@ -1,12 +1,37 @@
 import type {NextRequest} from "next/server";
 
+export interface Credentials {
+	username: string;
+	password: string;
+}
+
 /**
  * Handles basic authentication
+ *
+ * @deprecated Use the new method 'integrateHttpBasicAuth' allowing a list of credentials to check against instead
  */
 export function handleHttpBasicAuth (
 	request: NextRequest,
 	username: string,
 	password: string,
+	responseText: string = "Auth required",
+	realmLabel: string = "Secure Area",
+) : Response | undefined
+{
+	return integrateHttpBasicAuth(
+		request,
+		[{username: username, password: password}],
+		responseText,
+		realmLabel
+	);
+}
+
+/**
+ * Handles basic authentication
+ */
+export function integrateHttpBasicAuth (
+	request: NextRequest,
+	users: Credentials[],
 	responseText: string = "Auth required",
 	realmLabel: string = "Secure Area",
 ) : Response | undefined
@@ -20,10 +45,12 @@ export function handleHttpBasicAuth (
 			.toString()
 			.split(":");
 
-		if (givenUser === username && givenPassword === password)
-		{
-			return;
-		}
+		users.forEach((item) => {
+			if (givenUser === item.username && givenPassword === item.password)
+			{
+				return;
+			}
+		})
 	}
 
 	return new Response(responseText, {
