@@ -1,8 +1,15 @@
+2.4.0
+=====
+
+* (feature) add `useUsercentricsServiceConsent`, a hook that integrate the status of the given usercentrics service by id
+
+
 2.3.1
 =====
 
 * (improvement) Add method `integrateHttpBasicAuth()` for handling a list of Http Basic Auth Credentials
 * (deprecation) Deprecate `handleHttpBasicAuth` method
+
 
 2.3.0
 =====
@@ -21,7 +28,6 @@
 
 * (improvement) Add more parameters for `<Usercentrics>` component.
 * (improvement) Add `parseLocale` function.
-
 
 
 2.2.1
