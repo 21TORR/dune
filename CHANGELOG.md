@@ -1,7 +1,7 @@
 2.4.0
 =====
 
-* (feature) add `useUsercentricsServiceConsent`, a hook that integrate the status of the given usercentrics service by id
+* (feature) add `useUsercentricsServiceConsent`, a hook that integrates the status of the given usercentrics service by id
 
 
 2.3.1
