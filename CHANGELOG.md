@@ -3,6 +3,7 @@
 
 * (improvement) Only support React 19+.
 * (feature) Add `fetchApi()` helper.
+* (improvement) Remove dependency that can be built natively.
 
 
 

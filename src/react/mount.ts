@@ -1,5 +1,4 @@
 import {find} from '../dom/traverse';
-import xtend from 'xtend';
 import {parseElementContentAsJson} from '../json';
 import {ComponentType, createElement} from 'react';
 import {createRoot} from 'react-dom/client';
@@ -60,7 +59,10 @@ export function mountJsx <ComponentProperty = Record<string, unknown>> (
 		}
 
 		// try to parse the content as JSON
-		params = xtend(params, parseElementContentAsJson<Record<string, unknown>>(element) || {});
+		params = {
+			...params,
+			...parseElementContentAsJson<Record<string, unknown>>(element) ?? {},
+		};
 
 		// wrap or use the parent as target
 		const target = document.createElement("div");
