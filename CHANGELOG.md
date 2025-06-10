@@ -1,3 +1,16 @@
+2.6.0
+=====
+
+* (improvement) Only support React 19+.
+
+
+
+2.5.0
+=====
+
+* (feature) Integrate new Usercentrics CMP v3.
+
+
 2.4.0
 =====
 
