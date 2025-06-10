@@ -5,7 +5,7 @@
 	"homepage": "https://github.com/21TORR/dune",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/21TORR/dune.git"
+		"url": "git+https://github.com/21TORR/dune.git"
 	},
 	"type": "module",
 	"scripts": {
