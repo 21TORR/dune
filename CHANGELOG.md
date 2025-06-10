@@ -2,6 +2,7 @@
 =====
 
 * (improvement) Only support React 19+.
+* (feature) Add `fetchApi()` helper.
 
 
 
