@@ -6,6 +6,14 @@ const errorSchema = z.object({
 	errorMessage: z.optional(z.string()),
 });
 
+type Logger = Readonly<{
+	debug: (...args: unknown[]) => unknown;
+	error: (...args: unknown[]) => unknown;
+}>
+
+type ApiFetchSettings = Readonly<{
+	logger?: Logger;
+}>;
 
 
 /**
@@ -18,16 +26,18 @@ export async function fetchApi <
 	dataSchema?: DataSchema,
 	requestSettings: RequestInit = {},
 	isDebug: boolean = false,
+	settings: ApiFetchSettings = {},
 ) : Promise<z.infer<typeof dataSchema>>
 {
 	let response: Response;
+	const logger = settings.logger ?? console;
 
 	// region Send Request
 	try
 	{
 		if (isDebug)
 		{
-			console.debug("Fetching from API", {url: url.toString()});
+			logger.debug("Fetching from API", {url: url.toString()});
 		}
 
 		response = await fetch(
@@ -44,7 +54,7 @@ export async function fetchApi <
 	}
 	catch (error)
 	{
-		console.error(
+		logger.error(
 			"API request failed due to error",
 			{
 				err: error,
@@ -70,7 +80,7 @@ export async function fetchApi <
 	}
 	catch (error)
 	{
-		console.error(
+		logger.error(
 			"API response is no JSON",
 			{
 				contentType: response.headers.get("content-type"),
@@ -93,7 +103,7 @@ export async function fetchApi <
 	{
 		if (!response.ok)
 		{
-			console.error("Got success response, but API response is no success");
+			logger.error("Got success response, but API response is no success");
 		}
 
 		// @ts-expect-error data errors out
@@ -101,7 +111,7 @@ export async function fetchApi <
 	}
 	else
 	{
-		console.debug("No success cause", successResponse.error);
+		logger.debug("No success cause", successResponse.error);
 	}
 
 	const failureResponse = errorSchema.safeParse(responseData);
@@ -110,17 +120,17 @@ export async function fetchApi <
 	{
 		if (response.ok)
 		{
-			console.error("Got error response, but API response is success");
+			logger.error("Got error response, but API response is success");
 		}
 
 		throw failureResponse.data;
 	}
 	else
 	{
-		console.debug("No failure cause", failureResponse.error);
+		logger.debug("No failure cause", failureResponse.error);
 	}
 
-	console.error(
+	logger.error(
 		"Invalid API response",
 		{
 			responseData,
