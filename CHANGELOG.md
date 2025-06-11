@@ -1,16 +1,10 @@
-2.6.0
-=====
-
-* (improvement) Only support React 19+.
-* (feature) Add `fetchApi()` helper.
-* (improvement) Remove dependency that can be built natively.
-
-
-
 2.5.0
 =====
 
 * (feature) Integrate new Usercentrics CMP v3.
+* (improvement) Only support React 19+.
+* (feature) Add `fetchApi()` helper.
+* (improvement) Remove dependency that can be built natively.
 
 
 2.4.0
