@@ -1,8 +1,7 @@
 import {find} from '../dom/traverse';
-import xtend from 'xtend';
 import {parseElementContentAsJson} from '../json';
 import {ComponentType, createElement} from 'react';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom/client';
 
 type MountableFunction = (element: HTMLElement, ...args: unknown[]) => unknown;
 interface MountableFunctionOptions {
@@ -52,7 +51,6 @@ export function mountJsx <ComponentProperty = Record<string, unknown>> (
 	{
 		const parent = element.parentElement;
 		let params = options.args || {};
-		let target: HTMLElement;
 
 		if (!parent)
 		{
@@ -61,26 +59,24 @@ export function mountJsx <ComponentProperty = Record<string, unknown>> (
 		}
 
 		// try to parse the content as JSON
-		params = xtend(params, parseElementContentAsJson<Record<string, unknown>>(element) || {});
+		params = {
+			...params,
+			...parseElementContentAsJson<Record<string, unknown>>(element) ?? {},
+		};
 
 		// wrap or use the parent as target
+		const target = document.createElement("div");
+		parent.insertBefore(target, element);
+
 		if (options.wrap)
 		{
-			target = document.createElement("div");
 			target.classList.add(options.wrap);
-			parent.insertBefore(target, element);
-		}
-		else
-		{
-			target = parent;
 		}
 
 		// remove the original element
 		parent.removeChild(element);
 
-		render(
-			createElement(mountable, params),
-			target
-		);
+		const appRoot = createRoot(target);
+		appRoot.render(createElement(mountable, params));
 	});
 }
