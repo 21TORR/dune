@@ -1,9 +1,9 @@
-import z from "zod";
+import z from "zod/v4-mini";
 
 const errorSchema = z.object({
 	ok: z.literal(false),
-	error: z.string().optional(),
-	errorMessage: z.string().optional(),
+	error: z.optional(z.string()),
+	errorMessage: z.optional(z.string()),
 });
 
 
@@ -12,7 +12,7 @@ const errorSchema = z.object({
  * API helper to fetch data from an API
  */
 export async function fetchApi <
-	DataSchema extends z.ZodTypeAny,
+	DataSchema extends z.ZodMiniType,
 > (
 	url: string | URL,
 	dataSchema?: DataSchema,
@@ -96,6 +96,7 @@ export async function fetchApi <
 			console.error("Got success response, but API response is no success");
 		}
 
+		// @ts-expect-error data errors out
 		return successResponse.data.data;
 	}
 	else
