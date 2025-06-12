@@ -106,8 +106,8 @@ export async function fetchApi <
 			logger.error("Got success response, but API response is no success");
 		}
 
-		// @ts-expect-error data errors out
-		return successResponse.data.data;
+		// @ts-expect-error .data errors out in zod right now. So we add this and the cast in the meantime
+		return successResponse.data.data as z.infer<typeof dataSchema>;
 	}
 	else
 	{
