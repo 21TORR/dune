@@ -1,3 +1,9 @@
+2.5.1
+=====
+
+* (bug) Fix invalid import in `api`.
+
+
 2.5.0
 =====
 
