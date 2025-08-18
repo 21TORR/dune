@@ -3,6 +3,7 @@ import Script from "next/script";
 
 export type ConsentManagerProps = Readonly<{
 	id: string;
+	culture?: string;
 }>
 
 export function Cookiebot (props: ConsentManagerProps): ReactElement|null
@@ -12,6 +13,7 @@ export function Cookiebot (props: ConsentManagerProps): ReactElement|null
 			id="Cookiebot"
 			src="https://consent.cookiebot.eu/uc.js"
 			data-cbid={props.id}
+			data-culture={props.culture}
 			async
 		/>
 	);
