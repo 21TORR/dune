@@ -1,3 +1,9 @@
+2.5.2
+=====
+
+* (improvement) Added culture property to cookiebot snippet.
+
+
 2.5.1
 =====
 
