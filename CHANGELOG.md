@@ -1,3 +1,10 @@
+2.6.0
+=====
+
+* (improvement) Bump zod to `4.x`
+* (feature) Add proper return values for `fetchApi()`.
+
+
 2.5.2
 =====
 
