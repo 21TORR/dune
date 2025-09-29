@@ -190,7 +190,6 @@ export async function fetchApi <
 		return successResponse.data.data as z.infer<typeof dataSchema>;
 	}
 
-	console.log(responseData);
 	const failureResponse = errorSchema.safeParse(responseData);
 
 	if (failureResponse.success)
