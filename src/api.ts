@@ -1,19 +1,103 @@
-import {z} from "zod/v4-mini";
+import {z} from "zod/mini";
 
 const errorSchema = z.object({
 	ok: z.literal(false),
 	error: z.optional(z.string()),
 	errorMessage: z.optional(z.string()),
+	data: z.unknown(),
 });
 
 type Logger = Readonly<{
-	debug: (...args: unknown[]) => unknown;
-	error: (...args: unknown[]) => unknown;
+	debug: (message: string, context?: Record<string, unknown>) => void;
+	error: (message: string, context?: Record<string, unknown>) => void;
 }>
 
 type ApiFetchSettings = Readonly<{
 	logger?: Logger;
 }>;
+
+class ApiError extends Error
+{
+	readonly #errorCode: string;
+	readonly #data: unknown;
+	readonly #errorMessage: string|null;
+
+
+	constructor (
+		errorCode: string,
+		data: unknown = undefined,
+		errorMessage: string|null|undefined = undefined,
+	)
+	{
+		super(`The API request failed due to an error: ${errorCode}`);
+		this.#errorCode = errorCode;
+		this.#data = data;
+		this.#errorMessage = errorMessage ?? null;
+	}
+
+	/**
+	 *
+	 */
+	get errorCode () : string
+	{
+		return this.#errorCode;
+	}
+
+	/**
+	 * The data of the response
+	 */
+	get data () : unknown
+	{
+		return this.#data;
+	}
+
+	/**
+	 * A user-facing error message
+	 */
+	get errorMessage () : string|null
+	{
+		return this.#errorMessage;
+	}
+}
+
+class RequestError extends Error
+{
+	private response: Response;
+
+	/**
+	 *
+	 */
+	constructor (response: Response)
+	{
+		super();
+		this.response = response;
+	}
+
+	/**
+	 *
+	 */
+	get is404 ()
+	{
+		return 404 === this.response.status;
+	}
+}
+
+/**
+ *
+ */
+export function isApiError (value: unknown) : value is ApiError
+{
+	return value instanceof ApiError;
+}
+
+/**
+ *
+ */
+export function isRequestError (value: unknown) : value is RequestError
+{
+	return value instanceof RequestError;
+}
+
 
 
 /**
@@ -25,20 +109,16 @@ export async function fetchApi <
 	url: string | URL,
 	dataSchema?: DataSchema,
 	requestSettings: RequestInit = {},
-	isDebug: boolean = false,
 	settings: ApiFetchSettings = {},
-) : Promise<z.infer<typeof dataSchema>>
+) : Promise<z.infer<DataSchema>>
 {
 	let response: Response;
-	const logger = settings.logger ?? console;
+	const logger = settings.logger;
 
 	// region Send Request
 	try
 	{
-		if (isDebug)
-		{
-			logger.debug("Fetching from API", {url: url.toString()});
-		}
+		logger?.debug("Fetching from API", {url: url.toString()});
 
 		response = await fetch(
 			url,
@@ -54,7 +134,7 @@ export async function fetchApi <
 	}
 	catch (error)
 	{
-		logger.error(
+		logger?.error(
 			"API request failed due to error",
 			{
 				err: error,
@@ -80,7 +160,7 @@ export async function fetchApi <
 	}
 	catch (error)
 	{
-		logger.error(
+		logger?.error(
 			"API response is no JSON",
 			{
 				contentType: response.headers.get("content-type"),
@@ -103,34 +183,42 @@ export async function fetchApi <
 	{
 		if (!response.ok)
 		{
-			logger.error("Got success response, but API response is no success");
+			logger?.error("Got success response, but API response is no success");
 		}
 
 		// @ts-expect-error .data errors out in zod right now. So we add this and the cast in the meantime
 		return successResponse.data.data as z.infer<typeof dataSchema>;
 	}
-	else
-	{
-		logger.debug("No success cause", successResponse.error);
-	}
 
+	console.log(responseData);
 	const failureResponse = errorSchema.safeParse(responseData);
 
 	if (failureResponse.success)
 	{
 		if (response.ok)
 		{
-			logger.error("Got error response, but API response is success");
+			logger?.error("Got error response, but API response is success");
 		}
 
-		throw failureResponse.data;
+		throw new ApiError(
+			failureResponse.data.error,
+			failureResponse.data.data,
+			failureResponse.data.errorMessage,
+		);
 	}
 	else
 	{
-		logger.debug("No failure cause", failureResponse.error);
+		logger?.debug("No failure cause", {
+			error: failureResponse.error,
+		});
 	}
 
-	logger.error(
+	if (404 === response.status)
+	{
+		throw new RequestError(response);
+	}
+
+	logger?.error(
 		"Invalid API response",
 		{
 			responseData,
