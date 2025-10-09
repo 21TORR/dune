@@ -1,3 +1,9 @@
+2.7.0
+=====
+
+* (feature) Add `UsercentricsV3` component for v3 configurations.
+
+
 2.6.0
 =====
 
