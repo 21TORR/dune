@@ -8,6 +8,10 @@ export type UsercentricsProps = Readonly<{
 	locale: string;
 }>;
 
+/**
+ * This component will *only* work with v2 configuration IDs. If you're trying to use this component with a v3 configuration,
+ * the website will become unscrollable as Usercentrics web-component silently fails to load and blocks any scrolling.
+ */
 export function Usercentrics (props: UsercentricsProps): ReactElement | null
 {
 	const isProd = true === props.production;
