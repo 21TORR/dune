@@ -62,15 +62,26 @@ class ApiError extends Error
 
 class RequestError extends Error
 {
-	private response: Response;
+	readonly #response: Response;
+	readonly #content: string;
+	readonly #contentType: string;
+	readonly #errorMessage: string;
 
 	/**
 	 *
 	 */
-	constructor (response: Response)
+	constructor (
+		response: Response,
+		content: string,
+		contentType: string,
+		errorMessage: string,
+	)
 	{
 		super();
-		this.response = response;
+		this.#response = response;
+		this.#content = content;
+		this.#contentType = contentType;
+		this.#errorMessage = errorMessage;
 	}
 
 	/**
@@ -78,7 +89,52 @@ class RequestError extends Error
 	 */
 	get is404 ()
 	{
-		return 404 === this.response.status;
+		return 404 === this.statusCode;
+	}
+
+	/**
+	 *
+	 */
+	get statusCode () : number
+	{
+		return this.#response.status;
+	}
+
+	/**
+	 *
+	 */
+	get content () : string
+	{
+		return this.#content;
+	}
+
+	/**
+	 *
+	 */
+	get contentType () : string
+	{
+		return this.#contentType;
+	}
+
+	/**
+	 *
+	 */
+	get errorMessage () : string
+	{
+		return this.#errorMessage;
+	}
+
+	/**
+	 *
+	 */
+	get debug () : Record<string, unknown>
+	{
+		return {
+			errorMessage: this.errorMessage,
+			contentType: this.contentType,
+			content: this.content,
+			statusCode: this.statusCode,
+		};
 	}
 }
 
@@ -135,7 +191,7 @@ export async function fetchApi <
 	catch (error)
 	{
 		logger?.error(
-			"API request failed due to error",
+			"API request failed due to an unknown error",
 			{
 				err: error,
 				url: url.toString(),
@@ -146,14 +202,21 @@ export async function fetchApi <
 	}
 	// endregion
 
+	const contentType = response.headers.get("content-type") ?? "application/octet-stream";
+	const responseContentAsString = await response.clone().text();
 	let responseData: unknown;
 
 	// region parse JSON
 	try
 	{
-		if (!response.headers.get("content-type")?.includes("application/json"))
+		if (!contentType.includes("application/json"))
 		{
-			throw new Error("API response is no json");
+			throw new RequestError(
+				response,
+				responseContentAsString,
+				contentType,
+				"API response is no json",
+			);
 		}
 
 		responseData = await response.json();
@@ -163,13 +226,15 @@ export async function fetchApi <
 		logger?.error(
 			"API response is no JSON",
 			{
-				contentType: response.headers.get("content-type"),
+				contentType: contentType,
 				url: url.toString(),
 				error: error,
+				content: responseContentAsString,
+				statusCode: response.status,
 			},
 		);
 
-		throw new Error("API response is no json");
+		throw error;
 	}
 	// endregion
 
@@ -196,7 +261,11 @@ export async function fetchApi <
 	{
 		if (response.ok)
 		{
-			logger?.error("Got error response, but API response is success");
+			logger?.error("Got error response, but API response is success", {
+				statusCode: response.status,
+				content: responseContentAsString,
+				contentType: contentType,
+			});
 		}
 
 		throw new ApiError(
@@ -209,12 +278,20 @@ export async function fetchApi <
 	{
 		logger?.debug("No failure cause", {
 			error: failureResponse.error,
+			statusCode: response.status,
+			content: responseContentAsString,
+			contentType: contentType,
 		});
 	}
 
 	if (404 === response.status)
 	{
-		throw new RequestError(response);
+		throw new RequestError(
+			response,
+			responseContentAsString,
+			contentType,
+			"Request is 404",
+		);
 	}
 
 	logger?.error(
@@ -225,8 +302,16 @@ export async function fetchApi <
 			error: "unparseable response",
 			successIssues: successResponse.error,
 			failureIssues: failureResponse.error,
+			statusCode: response.status,
+			content: responseContentAsString,
+			contentType: contentType,
 		},
 	);
 
-	throw new Error(`Invalid API response`);
+	throw new RequestError(
+		response,
+		responseContentAsString,
+		contentType,
+		"Invalid API response",
+	);
 }

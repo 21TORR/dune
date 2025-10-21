@@ -1,3 +1,10 @@
+2.7.1
+=====
+
+* (improvement) Pass more info in `RequestError`.
+* (improvement) Use `RequestError` for every request if possible.
+
+
 2.7.0
 =====
 
