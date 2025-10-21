@@ -135,7 +135,7 @@ export async function fetchApi <
 	catch (error)
 	{
 		logger?.error(
-			"API request failed due to error",
+			"API request failed due to an unknown error",
 			{
 				err: error,
 				url: url.toString(),
@@ -146,12 +146,14 @@ export async function fetchApi <
 	}
 	// endregion
 
+	const contentType = response.headers.get("content-type") ?? "application/octet-stream";
+	const responseContentAsString = await response.text();
 	let responseData: unknown;
 
 	// region parse JSON
 	try
 	{
-		if (!response.headers.get("content-type")?.includes("application/json"))
+		if (!contentType.includes("application/json"))
 		{
 			throw new Error("API response is no json");
 		}
@@ -163,9 +165,11 @@ export async function fetchApi <
 		logger?.error(
 			"API response is no JSON",
 			{
-				contentType: response.headers.get("content-type"),
+				contentType: contentType,
 				url: url.toString(),
 				error: error,
+				content: responseContentAsString,
+				statusCode: response.status,
 			},
 		);
 
@@ -196,7 +200,11 @@ export async function fetchApi <
 	{
 		if (response.ok)
 		{
-			logger?.error("Got error response, but API response is success");
+			logger?.error("Got error response, but API response is success", {
+				statusCode: response.status,
+				content: responseContentAsString,
+				contentType: contentType,
+			});
 		}
 
 		throw new ApiError(
@@ -209,6 +217,9 @@ export async function fetchApi <
 	{
 		logger?.debug("No failure cause", {
 			error: failureResponse.error,
+			statusCode: response.status,
+			content: responseContentAsString,
+			contentType: contentType,
 		});
 	}
 
@@ -225,6 +236,9 @@ export async function fetchApi <
 			error: "unparseable response",
 			successIssues: successResponse.error,
 			failureIssues: failureResponse.error,
+			statusCode: response.status,
+			content: responseContentAsString,
+			contentType: contentType,
 		},
 	);
 
