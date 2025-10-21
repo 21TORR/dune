@@ -65,7 +65,7 @@ class RequestError extends Error
 	readonly #response: Response;
 	readonly #content: string;
 	readonly #contentType: string;
-	readonly #error: string;
+	readonly #errorMessage: string;
 
 	/**
 	 *
@@ -74,13 +74,14 @@ class RequestError extends Error
 		response: Response,
 		content: string,
 		contentType: string,
-		error: string,
+		errorMessage: string,
 	)
 	{
 		super();
 		this.#response = response;
 		this.#content = content;
 		this.#contentType = contentType;
+		this.#errorMessage = errorMessage;
 	}
 
 	/**
@@ -118,9 +119,22 @@ class RequestError extends Error
 	/**
 	 *
 	 */
-	get error () : string
+	get errorMessage () : string
 	{
-		return this.#error;
+		return this.#errorMessage;
+	}
+
+	/**
+	 *
+	 */
+	get debug () : Record<string, unknown>
+	{
+		return {
+			errorMessage: this.errorMessage,
+			contentType: this.contentType,
+			content: this.content,
+			statusCode: this.statusCode,
+		};
 	}
 }
 
@@ -189,7 +203,7 @@ export async function fetchApi <
 	// endregion
 
 	const contentType = response.headers.get("content-type") ?? "application/octet-stream";
-	const responseContentAsString = await response.text();
+	const responseContentAsString = await response.clone().text();
 	let responseData: unknown;
 
 	// region parse JSON
