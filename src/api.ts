@@ -62,15 +62,25 @@ class ApiError extends Error
 
 class RequestError extends Error
 {
-	private response: Response;
+	readonly #response: Response;
+	readonly #content: string;
+	readonly #contentType: string;
+	readonly #error: string;
 
 	/**
 	 *
 	 */
-	constructor (response: Response)
+	constructor (
+		response: Response,
+		content: string,
+		contentType: string,
+		error: string,
+	)
 	{
 		super();
-		this.response = response;
+		this.#response = response;
+		this.#content = content;
+		this.#contentType = contentType;
 	}
 
 	/**
@@ -78,7 +88,39 @@ class RequestError extends Error
 	 */
 	get is404 ()
 	{
-		return 404 === this.response.status;
+		return 404 === this.statusCode;
+	}
+
+	/**
+	 *
+	 */
+	get statusCode () : number
+	{
+		return this.#response.status;
+	}
+
+	/**
+	 *
+	 */
+	get content () : string
+	{
+		return this.#content;
+	}
+
+	/**
+	 *
+	 */
+	get contentType () : string
+	{
+		return this.#contentType;
+	}
+
+	/**
+	 *
+	 */
+	get error () : string
+	{
+		return this.#error;
 	}
 }
 
@@ -155,7 +197,12 @@ export async function fetchApi <
 	{
 		if (!contentType.includes("application/json"))
 		{
-			throw new Error("API response is no json");
+			throw new RequestError(
+				response,
+				responseContentAsString,
+				contentType,
+				"API response is no json",
+			);
 		}
 
 		responseData = await response.json();
@@ -173,7 +220,7 @@ export async function fetchApi <
 			},
 		);
 
-		throw new Error("API response is no json");
+		throw error;
 	}
 	// endregion
 
@@ -225,7 +272,12 @@ export async function fetchApi <
 
 	if (404 === response.status)
 	{
-		throw new RequestError(response);
+		throw new RequestError(
+			response,
+			responseContentAsString,
+			contentType,
+			"Request is 404",
+		);
 	}
 
 	logger?.error(
@@ -242,5 +294,10 @@ export async function fetchApi <
 		},
 	);
 
-	throw new Error(`Invalid API response`);
+	throw new RequestError(
+		response,
+		responseContentAsString,
+		contentType,
+		"Invalid API response",
+	);
 }
