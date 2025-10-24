@@ -1,3 +1,9 @@
+2.7.2
+=====
+
+* (improvement) Also pass response in `ApiError`.
+
+
 2.7.1
 =====
 
