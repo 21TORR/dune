@@ -18,21 +18,40 @@ type ApiFetchSettings = Readonly<{
 
 class ApiError extends Error
 {
+	readonly #response: Response;
 	readonly #errorCode: string;
 	readonly #data: unknown;
 	readonly #errorMessage: string|null;
 
 
 	constructor (
+		response: Response,
 		errorCode: string,
 		data: unknown = undefined,
 		errorMessage: string|null|undefined = undefined,
 	)
 	{
 		super(`The API request failed due to an error: ${errorCode}`);
+		this.#response = response;
 		this.#errorCode = errorCode;
 		this.#data = data;
 		this.#errorMessage = errorMessage ?? null;
+	}
+
+	/**
+	 *
+	 */
+	get is404 ()
+	{
+		return 404 === this.statusCode;
+	}
+
+	/**
+	 *
+	 */
+	get statusCode () : number
+	{
+		return this.#response.status;
 	}
 
 	/**
@@ -269,6 +288,7 @@ export async function fetchApi <
 		}
 
 		throw new ApiError(
+			response,
 			failureResponse.data.error,
 			failureResponse.data.data,
 			failureResponse.data.errorMessage,
