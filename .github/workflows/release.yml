@@ -6,6 +6,10 @@ on:
         tags:
             - '*'
 
+permissions:
+    id-token: write  # Required for OIDC in npm
+    contents: read
+
 jobs:
     ci:
         uses: "./.github/workflows/ci.yml"
