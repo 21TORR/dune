@@ -19,11 +19,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout Code
-                uses: actions/checkout@v4
+                uses: actions/checkout@v6
 
-            -   uses: actions/setup-node@v4
+            -   uses: actions/setup-node@v6
                 with:
-                    node-version: '18'
+                    node-version: '24'
+
+            -
+                name: Clear auth token for OIDC
+                run: echo "NODE_AUTH_TOKEN=" >> $GITHUB_ENV
 
             -   uses: pnpm/action-setup@v3
                 with:
@@ -37,7 +41,4 @@ jobs:
                 run: pnpm run prepare-release
 
             -   name: Publish package
-                uses: JS-DevTools/npm-publish@v3
-                with:
-                    token: ${{ secrets.NPM_TOKEN }}
-                    package: dist
+                run: npm publish --ignore-scripts

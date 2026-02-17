@@ -1,3 +1,9 @@
+2.7.5
+=====
+
+* (internal) Update publishing workflow.
+
+
 2.7.4
 =====
 
