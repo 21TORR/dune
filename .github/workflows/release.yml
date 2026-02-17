@@ -42,3 +42,4 @@ jobs:
 
             -   name: Publish package
                 run: npm publish --ignore-scripts
+                working-directory: dist

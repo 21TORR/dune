@@ -1,3 +1,9 @@
+2.7.6
+=====
+
+* (bug) Fix invalid release.
+
+
 2.7.5
 =====
 
