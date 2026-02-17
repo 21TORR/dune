@@ -1,4 +1,5 @@
 import {z} from "zod/mini";
+import type {$ZodType} from "zod/v4/core";
 
 const errorSchema = z.object({
 	ok: z.literal(false),
@@ -179,7 +180,7 @@ export function isRequestError (value: unknown) : value is RequestError
  * API helper to fetch data from an API
  */
 export async function fetchApi <
-	DataSchema extends z.ZodMiniType,
+	DataSchema extends $ZodType,
 > (
 	url: string | URL,
 	dataSchema?: DataSchema,
