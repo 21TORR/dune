@@ -1,3 +1,9 @@
+2.7.3
+=====
+
+* (improvement) Improve `zod` type usage.
+
+
 2.7.2
 =====
 
