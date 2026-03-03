@@ -17,7 +17,7 @@ type ApiFetchSettings = Readonly<{
 	logger?: Logger;
 }>;
 
-class ApiError extends Error
+export class ApiError extends Error
 {
 	readonly #response: Response;
 	readonly #errorCode: string;
@@ -80,7 +80,7 @@ class ApiError extends Error
 	}
 }
 
-class RequestError extends Error
+export class RequestError extends Error
 {
 	readonly #response: Response;
 	readonly #content: string;
