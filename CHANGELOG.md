@@ -1,3 +1,9 @@
+2.7.7
+=====
+
+* (improvement) Export `ApiError` and `RequestError`.
+
+
 2.7.6
 =====
 
