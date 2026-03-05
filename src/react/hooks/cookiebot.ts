@@ -12,7 +12,8 @@ type WindowWithCookiebot = Window & Readonly<{
 			statistics: boolean;
 			method: "explicit";
 			stamp: string;
-		}
+		};
+		consented: boolean;
 	};
 }>;
 
@@ -26,6 +27,7 @@ type ConsentSettings = {
 type CookiebotSettings = Readonly<{
 	openConsentManager(): void;
 	consent: Omit<ConsentSettings, "stamp">;
+	hasAnyConsent: boolean;
 }>;
 
 /**
@@ -33,6 +35,7 @@ type CookiebotSettings = Readonly<{
  */
 export function useCookiebot () : CookiebotSettings
 {
+	const [hasAnyConsent, setHasAnyConsent] = useState(false);
 	const [consent, setConsent] = useState<ConsentSettings>({
 		stamp: "unset",
 		marketing: false,
@@ -51,6 +54,7 @@ export function useCookiebot () : CookiebotSettings
 				return;
 			}
 
+			setHasAnyConsent(global.Cookiebot.consented);
 			setConsent({
 				...global.Cookiebot.consent,
 			});
@@ -71,5 +75,6 @@ export function useCookiebot () : CookiebotSettings
 		{
 			(window as WindowWithCookiebot).Cookiebot?.renew();
 		},
+		hasAnyConsent,
 	};
 }
