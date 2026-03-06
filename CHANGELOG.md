@@ -1,3 +1,10 @@
+2.8.0
+=====
+
+* (feature) Add `ConsentManagerIntegration`.
+* (improvement) Add `hasAnyConsnet` to `useCookiebot`.
+
+
 2.7.7
 =====
 
