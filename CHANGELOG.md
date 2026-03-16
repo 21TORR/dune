@@ -1,3 +1,9 @@
+2.8.1
+=====
+
+* (improvement) Add `debug` in `ApiError`.
+
+
 2.8.0
 =====
 
