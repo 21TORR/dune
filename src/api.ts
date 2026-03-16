@@ -78,6 +78,19 @@ export class ApiError extends Error
 	{
 		return this.#errorMessage;
 	}
+
+	/**
+	 *
+	 */
+	get debug () : Record<string, unknown>
+	{
+		return {
+			data: this.data,
+			errorCode: this.errorCode,
+			errorMessage: this.errorMessage,
+			statusCode: this.statusCode,
+		};
+	}
 }
 
 export class RequestError extends Error
