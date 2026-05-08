@@ -5,7 +5,7 @@ const errorSchema = z.object({
 	ok: z.literal(false),
 	error: z.optional(z.string()),
 	errorMessage: z.optional(z.string()),
-	data: z.unknown(),
+	data: z.optional(z.unknown()),
 });
 
 type Logger = Readonly<{

@@ -17,7 +17,7 @@
 		"test": "pnpm run build && cd dist && pnpm version '2.0.0-dummy' --no-git-tag-version && npm pack --dry-run && publint"
 	},
 	"dependencies": {
-		"zod": "^4.3.6"
+		"zod": "^4.4.3"
 	},
 	"optionalDependencies": {
 		"next": "^15.5.12 || ^16.1.6",

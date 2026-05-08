@@ -1,3 +1,9 @@
+2.8.2
+=====
+
+* (bug) Wrap `z.unknown()` with `z.optional()` in `errorSchema.data`, due changes in zod (unknown is now NonOptional).
+
+
 2.8.1
 =====
 
